@@ -14,8 +14,8 @@ More information on the model and research can be found [here](http://youklab.or
 * MATLAB (R2017b, recent earlier versions should also work)
 
 #### Instructions
-1. Download the file 'Multicellularity R1.0.mlappinstall' from the directory above.
-2. Run the MATLAB Installer file. The program should unpack itself and install as an app in MATLAB. 
+1. Download the [latest release](https://github.com/YitengD/Multicellularity/releases). 
+2. Run the MATLAB Installer file 'Multicellularity R1.0.mlappinstall'. The program should unpack itself and install as an app in MATLAB. 
 3. Run the app from MATLAB. Go to the tab "Apps" to find the installed app.
 
 #### Advice
