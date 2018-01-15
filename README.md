@@ -43,7 +43,7 @@ The caption above the figure displays the time (in units of time steps) and stat
 Detailed descriptions of the variables can be found in the papers listed above.
 
 #### Running the simulation
-To run the simulation, simply click on "Run". To terminate a running simulation, click on "Stop". If you click on "Run" again, the app will run a new simulation rather than continue with the stopped simulation. The binary system will terminate when all the cells are in equilibrium (i.e. do not change their state any more). The continuous system will terminate only if you press stop, or when it has progressed 1000 time steps.
+To run the simulation, simply click on "Run". To terminate a running simulation to run a new one, click on "Stop". If you click on "Run" again, the app will run a new simulation rather than continue with the stopped simulation. To temporarily halt the simulation, press "Pause". The simulation will continue from the state in which it was paused once "Run" is pressed again. The binary system will terminate when all the cells are in equilibrium (i.e. do not change their state any more). The continuous system will terminate only if you press stop, or when it has progressed 1000 time steps.
 
 ## JavaScript app
 To be constructed
