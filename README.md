@@ -6,7 +6,7 @@ How do communicating cells organize themselves spatially and temporally? We mode
 
 More information on the model and research can be found [here](http://youklab.org/research.html). The papers in which the model was first published and further developed are:
 *  T. Maire and H. Youk. [Molecular-level tuning of cellular autonomy controls collective behaviors of cell populations](http://www.youklab.org/papers/CellSystems2015_Maire.pdf). Cell Systems 1, 349–360 (2015).
-* E. P. Olimpio, Y. Dang, and H. Youk. [Statistical dynamics of spatial-order formation by communicating cells](https://arxiv.org/abs/1706.06481). arXiv: 1706.06481 (2017).
+* E. P. Olimpio*, Y. Dang*, and H. Youk. [Statistical dynamics of spatial-order formation by communicating cells](http://www.youklab.org/papers/iScience2018_Olimpio_Dang.pdf). iScience 2: 27-40 (2018).
 
 ### **For additional information, troubleshooting and a project plan please refer to the [Wiki page](https://github.com/YitengD/Multicellularity/wiki).**
 
