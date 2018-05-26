@@ -1,0 +1,91 @@
+<deployment-project plugin="plugin.apptool" plugin-version="1.0">
+  <configuration build-checksum="1970053301" file="D:\Multicellularity\app\Multicellularity-2.0 release\Multicellularity2.0.prj" location="D:\Multicellularity\app\Multicellularity-2.0 release" name="Multicellularity2.0" target="target.mlapps" target-name="Package App">
+    <param.appname>Multicellularity2.0</param.appname>
+    <param.authnamewatermark>Yiteng Dang</param.authnamewatermark>
+    <param.email>y.dang@tudelft.nl</param.email>
+    <param.company>TU Delft</param.company>
+    <param.icon />
+    <param.icons />
+    <param.summary>Visualisation of a model for multicellular systems based on secrete-and-sense cells</param.summary>
+    <param.description>Release 2.0
+2018-05-19
+Documentation on https://github.com/YitengD/Multicellularity</param.description>
+    <param.screenshot />
+    <param.version>2.0</param.version>
+    <param.products.name />
+    <param.products.id />
+    <param.products.version />
+    <param.platforms />
+    <param.output>D:\Multicellularity\app\Multicellularity-2.0 release</param.output>
+    <param.guid>89408ff0-66e9-41e8-bde6-4f23d301c5c3</param.guid>
+    <unset>
+      <param.authnamewatermark />
+      <param.email />
+      <param.company />
+      <param.icon />
+      <param.icons />
+      <param.screenshot />
+      <param.products.name />
+      <param.products.id />
+      <param.products.version />
+      <param.platforms />
+      <param.output />
+    </unset>
+    <fileset.main>
+      <file>${PROJECT_ROOT}\app_R2_0_final.mlapp</file>
+    </fileset.main>
+    <fileset.depfun>
+      <file>${PROJECT_ROOT}\app_icons_media-playback-pause.png</file>
+      <file>${PROJECT_ROOT}\app_icons_media-playback-start.png</file>
+      <file>${PROJECT_ROOT}\app_icons_media-playback-stop.png</file>
+      <file>${PROJECT_ROOT}\app_icons_media-seek-backward.png</file>
+      <file>${PROJECT_ROOT}\app_icons_media-seek-forward.png</file>
+      <file>${PROJECT_ROOT}\app_icons_media-skip-backward.png</file>
+      <file>${PROJECT_ROOT}\app_icons_media-skip-forward.png</file>
+      <file>${PROJECT_ROOT}\dist_mat.m</file>
+      <file>${PROJECT_ROOT}\generate_I_new.m</file>
+      <file>${PROJECT_ROOT}\get_unique_distances.m</file>
+      <file>${PROJECT_ROOT}\init_cellpos_hex.m</file>
+      <file>${PROJECT_ROOT}\init_dist_hex.m</file>
+      <file>${PROJECT_ROOT}\init_random_cells_montecarlo.m</file>
+      <file>${PROJECT_ROOT}\moranI.m</file>
+      <file>${PROJECT_ROOT}\plot_h_vs_t.m</file>
+      <file>${PROJECT_ROOT}\plot_I_vs_t.m</file>
+      <file>${PROJECT_ROOT}\plot_p_I_vs_t.m</file>
+      <file>${PROJECT_ROOT}\plot_p_vs_t.m</file>
+      <file>${PROJECT_ROOT}\save_figure.m</file>
+      <file>${PROJECT_ROOT}\update_cells_noise.m</file>
+      <file>${PROJECT_ROOT}\update_cells_noise_hill.m</file>
+      <file>${PROJECT_ROOT}\update_cells_two_signals_add_finite_Hill.m</file>
+      <file>${PROJECT_ROOT}\update_cells_two_signals_multiply_finite_Hill.m</file>
+    </fileset.depfun>
+    <fileset.resources>
+      <file>${PROJECT_ROOT}\data</file>
+      <file>${PROJECT_ROOT}\readme.txt</file>
+    </fileset.resources>
+    <fileset.package />
+    <build-deliverables>
+      <file location="D:\Multicellularity\app" name="Multicellularity-2.0 release" optional="false">D:\Multicellularity\app\Multicellularity-2.0 release</file>
+    </build-deliverables>
+    <workflow />
+    <matlab>
+      <root>C:\Program Files\MATLAB\R2017b</root>
+      <toolboxes />
+    </matlab>
+    <platform>
+      <unix>false</unix>
+      <mac>false</mac>
+      <windows>true</windows>
+      <win2k>false</win2k>
+      <winxp>false</winxp>
+      <vista>false</vista>
+      <linux>false</linux>
+      <solaris>false</solaris>
+      <osver>10.0</osver>
+      <os32>false</os32>
+      <os64>true</os64>
+      <arch>win64</arch>
+      <matlab>true</matlab>
+    </platform>
+  </configuration>
+</deployment-project>
