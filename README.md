@@ -24,10 +24,10 @@ Using the App Installer:
 3. Run the app from the "Apps" menu in MATLAB.
 
 Manually:
-1. Download the file 'Multicellularity R*.zip', where * is the version number of the latest release. 
-2. Extract its contents and set it to a folder in which you have write permission (to store files).
-3. Run the file "app_R*_final.mlapp* to directly run the app.
-4. To edit the app, open "app_R*_final.mlapp* from the MATLAB "Open folder" menu or after you start MATLAB App Designer.
+1. Download the source files from the release.
+2. Move the folder of the latest release (of the form "release_*_full") to a location in which you have write permission (to store files).
+3. In the folder, open "app_R*_final.mlapp" to directly run the app.
+4. To edit the app, open "app_R*_final.mlapp" from the MATLAB "Open folder" menu or after you start MATLAB App Designer.
 
 ### Usage
 The GUI consists of (1) a menu at the top, (2) a left box with different tabs, with editable fields and switches under each tab, (3) a figure on the right which will output the lattice, (4) buttons on the bottom right for simulation control and (5) a message box for output messages. Let's go through the components one by one.
@@ -40,7 +40,8 @@ The color bar on the right shows how the colors match to the exact states of the
 #### Running the simulation
 
 The controls for running the simulation are based on media playback buttons and should be intuitive to use. Click on the "PLAY" button to run a new simulation. The "PAUSE" button will pause the simulation and resume once you press "PLAY" again. The simulation continues until the system reaches equilibrium (when none of the cells changes state upon updating), or when the maximum simulation time is reached (by default set to tmax = 5000). To stop a current simulation or reset a terminated simulation, press the "STOP" button. This erases the current simulation and all data associated with it, so if you intend to save the simulation, do so before you press "STOP". 
-The four buttons at the bottom are for going through a simulation without running it for more time (Replay mode). The skip forward and backward buttons skip to the start and end of the current simulation. The seek forward and backward buttons move the simulation by one step in time. At any time, the simulation can be run again by pressing "PLAY". If the simulation did not reach equilibrium, it will continue running after the last frame of the replay has been reached.
+The four buttons at the bottom are for going through a simulation without running it for more time (Replay mode). The skip forward and backward buttons skip to the start and end of the current simulation. The seek forward and backward buttons move the simulation by one step in time. At any time, the simulation can be run again by pressing "PLAY". If the simulation did not reach equilibrium, it will continue running after the last frame of the replay has been reached. In the "Simulation" menu, there is an additional option "Skip to time" that allows you to directly skip to a time you input. 
+Finally, there is a slider next to the buttons to control the speed of the simulation (i.e. how fast the frames follow each other).
 
 #### Display signal
 For two types of signals (see below), the simulator only displays the expression of one gene at a time. The "Display signal" button group allows you to toggle between the views of the two states of the cells. 
@@ -117,4 +118,4 @@ Yiteng Dang
 ### License
 MIT Licence
 
-### Last update 19/05/2018
+### Last update 04/06/2018
