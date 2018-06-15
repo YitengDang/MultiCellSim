@@ -19,8 +19,8 @@ elseif all(size(M_int)==[2 2])
     G = digraph(abs(M2));
     s = [-1 1];
     t = [0 0];
-
-    edgecolors = M2(M2~=0);
+    
+    edgecolors = M_int(M_int~=0);
 
     % (1) automatic layout
     %plot(G, 'Layout', 'circle', 'ArrowSize', 20, 'EdgeAlpha', 1, ...
@@ -41,7 +41,7 @@ elseif all(size(M_int)==[2 2])
     for i=1:2
         for j=1:2
             if ~interactions(i,j) && M_int(i,j)~=0
-                highlight(g, i, j, 'LineStyle', ':')
+                highlight(g, j, i, 'LineStyle', ':')
             end
         end
     end
@@ -80,7 +80,12 @@ elseif all(size(M_int)==[2 2])
     else
         map = [0, 0, 0];
     end
-
+    
+    % plot legend
+    p1 = plot(0, 0, 'b', 'LineWidth', 2);
+    p2 = plot(0, 0, 'r', 'LineWidth', 2);
+    legend([p1 p2], {'activation', 'repression'}, 'FontSize', 16, 'Location', 'best');
+    
     colormap(map);
     ax.Visible = 'off';
     h7.Color = [1 1 1];
