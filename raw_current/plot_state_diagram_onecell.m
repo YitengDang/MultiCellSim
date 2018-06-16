@@ -1,4 +1,4 @@
-function plot_state_diagram(M_int, Con, Coff, K)
+function plot_state_diagram_onecell(M_int, Con, Coff, K)
     
 % state transitions
 X_out_sub = cell(2);
@@ -36,13 +36,13 @@ nLabels = {};
 plot(Gs, 'XData', s, 'YData', t, 'ArrowSize', 20, 'EdgeAlpha', 1, ...
     'LineWidth', 3, 'EdgeColor', 'k',...
     'Marker', 'o', 'MarkerSize', 100, 'NodeColor', [0.2 0.2 0.2], 'NodeLabel', nLabels);
-text(s-0.09,t+0.015,{'(0,0)','(1,0)','(0,1)','(1,1)'}, 'Color', 'w', 'FontSize', 32)
+text(s-0.11,t+0.019,{'(0,0)','(1,0)','(0,1)','(1,1)'}, 'Color', 'w', 'FontSize', 32)
 ax = gca;
 axis([-0.4 1.4 -0.4 1.4]);
 ax.Visible = 'off';
 h8.Color = [1 1 1];
-set(ax, 'Units', 'Inches', 'Position', [0 0 9 8]);
-set(h8, 'Units', 'Inches', 'Position', [1 1 9 8]);
+set(ax, 'Units', 'Inches', 'Position', [0 0 7 6]);
+set(h8, 'Units', 'Inches', 'Position', [0.3 0.3 7 6]);
 
 
 end
