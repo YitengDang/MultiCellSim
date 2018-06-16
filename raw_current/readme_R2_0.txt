@@ -1,5 +1,6 @@
 Multicellular model simulation app
 Release 2.0
+
 -----------------------------------------------------------------------------
 ### Installation
 
