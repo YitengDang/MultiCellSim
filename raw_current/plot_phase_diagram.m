@@ -1,5 +1,7 @@
 function plot_phase_diagram(gz, a0, rcell, M_int, K_in, Con_in, lambda12)
     set(0, 'defaulttextinterpreter', 'latex');
+    
+    l = size(M_int, 1); %number of molecules
     % plots phase diagrams for each interaction of the system
     Rcell = rcell*a0;
     lambda = [1 lambda12];
@@ -24,13 +26,13 @@ function plot_phase_diagram(gz, a0, rcell, M_int, K_in, Con_in, lambda12)
     [dist, ~] = init_dist_hex(gz, gz);
     dist_vec = a0*dist(1,:);
     r = dist_vec(dist_vec>0); % exclude self influence
-    fN1 = sum(sinh(Rcell)*sum(exp((Rcell-r)./lambda(1)).*(lambda(1)./r)) ); % calculate signaling strength
-    fN2 = sum(sinh(Rcell)*sum(exp((Rcell-r)./lambda(2)).*(lambda(2)./r)) ); % calculate signaling strength
-    fN = [fN1 fN2];
+    for i=1:l % calculate signaling strength
+        fN(i) = sum(sinh(Rcell)*sum(exp((Rcell-r)./lambda(i)).*(lambda(i)./r)) ); 
+    end
 
     h9=figure(9);
-    for idx=1:2
-        subplot(2,1,idx);
+    for idx=1:l
+        subplot(l,1,idx);
         hold on
 
         % Make 4 limiting regions as boolean matrices
@@ -67,12 +69,12 @@ function plot_phase_diagram(gz, a0, rcell, M_int, K_in, Con_in, lambda12)
             1, 1, 0
             0.5, 0.5, 0.5];
         tmp = map([1:4 map_idx], :);
-        colormap(subplot(2,1,idx), tmp);
+        colormap(subplot(l,1,idx), tmp);
         %}
 
         % Plot current parameters as points
-        for i1=1:2 % gene influenced
-            markers = {'^', 'o'};
+        markers = {'^', 'o'};
+        for i1=1:l % gene influenced
             im = (M_int(i1, idx)==-1)*1 + (M_int(i1, idx)==1)*2;
             if im~=0
                 scatter(K_in(i1, idx), Con_in(idx), 100, markers{im}, 'filled', 'MarkerFaceColor', [1 0 1]);
