@@ -9,6 +9,16 @@ if isnumeric(file) && isnumeric(path) % if user clicked "cancel"
     return
 end
 load(fullfile(path, file));
+%% 
+fname_out = fullfile(pwd, 'data', 'time_evolution', 'test_movie');
+cells = cells_hist{1};
+N = size(cells, 1);
+gz = sqrt(N);
+cell_type = zeros(N, 1);
+[~, pos] = init_dist_hex(gz, gz);
+disp_mol = 1;
+save_movie(cells_hist, pos, cell_type, disp_mol, fname_out)
+    
 %% Plot figure
 fig_pos = [1 1 8 6];
 t1 = 40;
