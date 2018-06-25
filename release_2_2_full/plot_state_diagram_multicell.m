@@ -43,7 +43,7 @@ phase = R1 + 2*R2 + 3*R3 + 4*R4;
 % 5: autonomy (+) / autonomous oscillations (-)
 
 % Map from phase to diagram
-% state | activation/repression | input molecule (1/2)
+% activation/repression | state | input molecule (1/2)
 g_map = cell(2, 6, 2);
 % 0=OFF, 1:ON, 2:UNKNOWN
 % activation 
@@ -77,6 +77,8 @@ g_map{2,6,2} = [1 0; 1 0];
 
 gij = cell(2);
 X_out = cell(2, 1);
+% NB: if M_int(i, 1)=M_int(i, 2)=0, then current model gives X_out{i} =
+% ones(2). 
 for i=1:2
     for j=1:2
         if M_int(i,j)~=0
@@ -150,7 +152,7 @@ for i=1:2
             %    X_out_both(2,1)+1 + 2*X_out_both(2,2)];
             A(state_in, state_out) = 1;
             %disp(state_out);
-        elseif sum(X_out_this==2)==2 
+        elseif sum(X_out_this==2)==2 % all four transitions possible
             A(state_in, :) = 1;
         end
     end
