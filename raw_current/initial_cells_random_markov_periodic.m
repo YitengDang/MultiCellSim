@@ -1,4 +1,4 @@
-function [pos, dist, fN0, rejections] = initial_cells_random_markov_periodic(n, Lx, R, mcsteps, nodisplay)
+function [pos, dist, fN0, rejections] = initial_cells_random_markov_periodic(n, mcsteps, rcell)
 % Note: even perfect arrangement might not be accepted because distances
 % are rounded off.
 % Places cells randomly in a continuous space
@@ -8,13 +8,9 @@ L = 1;
 R = 0.02;
 n = round(L/R/5); % nmax = L/R
 %}
-if nargin<5
-    nodisplay = 0;
-end
-
-if ~nodisplay
-    disp('Initiating initial lattice...');
-end
+% Fixed parameters
+Lx = 1;
+R = rcell*Lx/(n+1);
 %---------main code below---------------
 N = n^2;
 
@@ -43,9 +39,6 @@ for i=1:N
     fN(i) = sum(sinh(R)*sum(exp(R-r)./r)); % calculate signaling strength
 end
 fN0 = mean(fN);
-if ~nodisplay
-    fprintf('fN0 (default fN) = %.2f \n', fN0);
-end
 %%
 % Key parameters
 % mcsteps = 10^5; % Monte Carlo steps
@@ -53,18 +46,13 @@ delta = (delx - 2*R)/4; % step size
 step = 0;
 rejections = 0;
 while step < mcsteps
-    %disp(step)
-    if mod(step, 10^4)==0 && ~nodisplay
-        fprintf('MC steps: %d, ', step);
-        fprintf('Rejections: %d \n', rejections);
-    end
     % Random step
     j = randi(N); %selected particle
     
     x_new = x; 
     y_new = y;
-    x_new(j) = mod(x_new(j) + delta*rand(), Lx);
-    y_new(j) = mod(y_new(j) + delta*rand(), Ly);
+    x_new(j) = mod(x_new(j) + delta*randn(), Lx);
+    y_new(j) = mod(y_new(j) + delta*randn(), Ly);
     
     % Calculate distance
     dist_new = calc_dist_periodic(x_new, y_new, Lx, Ly);
@@ -87,10 +75,6 @@ pos = [x(:) y(:)];
 % would be Lx/n.
 dist = dist/(Lx/n); 
 
-if ~nodisplay
-    fprintf('final MC trials: %d \n', mcsteps);
-    fprintf('final rejections: %d \n', rejections);
-end
 %-----------end main code----------------------
 %% Draw configuration
 %{
