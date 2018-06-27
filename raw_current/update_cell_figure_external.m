@@ -1,4 +1,4 @@
-function update_cell_figure_external(hin, pos, cells_in, cell_type, t, disp_mol)
+function update_cell_figure_external(hin, pos, cells_in, cell_type, t, disp_mol, rcell)
     % Plot the cell state in a diagram according to their type. If
     % cell_type(i) = 0, the cell is plotted as circle, if 1 it is plotted
     % as square. hin is the figure handle.
@@ -15,19 +15,20 @@ function update_cell_figure_external(hin, pos, cells_in, cell_type, t, disp_mol)
     %    'FontSize', 24, 'Interpreter', 'latex');
     %% calculate figure dimensions
     N = size(pos,1);
-    gz = sqrt(N);
-    Lx = 560;
-    Ly = (sqrt(3)/2*(gz-1)+2)/(3/2*(gz+1))*Lx;
-    a0 = Lx/(3/2*(gz+1));
-    Rcell = 0.5*a0;
+    n = sqrt(N);
+    d = 2*rcell*1/(n+1);
+    Sx = 560;
+    Sy = sqrt(3)/2*Sx; %
+    a0 = Sx/(1+2*d)/(n+1);
+    Rcell = rcell*a0;
+
     %%
     % set image properties
-    %h = gcf;
-    %hold on
-    xlim([-1 pos(end,1)+1]);
-    ylim([-1 pos(end,2)+1]);
+    xlim([-d 1+d]);
+    ylim([-d sqrt(3)/2+d]);
+    
     set(hin, 'Units', 'points');
-    set(hin, 'Position', [50 50 Lx Ly]);
+    set(hin, 'Position', [50 50 Sx Sy]);
     set(gca, 'color', [0.8 0.8 0.8]) % background color
      
     % get the right cells to display
@@ -68,8 +69,23 @@ function update_cell_figure_external(hin, pos, cells_in, cell_type, t, disp_mol)
     p1 = scatter(pos(idx1,1), pos(idx1,2), Rcell^2, c_all(idx1, :), 'filled', 's');
     scatter(pos(idx1,1), pos(idx1,2), Rcell^2, clr_k(idx1, :), 's'); % plot cell boundaries
     %}
+    
+    % Plot box outline
+    Lx = 1; Ly = sqrt(3)/2;
+    plot([0 Lx], [0 0], 'k--');
+    plot([0 Lx], [Ly Ly], 'k--');
+    plot([0 0], [0 Ly], 'k--');
+    plot([Lx Lx], [0 Ly], 'k--');
+            
     hold off
+    %% Changed from original:
+    % Sy = (sqrt(3)/2*(gz-1)+2)/(3/2*(gz+1))*Sx;
+    % a0 = Lx/(3/2*(gz+1));
+    %xlim([-1 pos(end,1)+1]);
+    %ylim([-1 pos(end,2)+1]);
+    
     % Add color bar for Xi
+    %{
     c = colorbar();
     c.Ticks = 0:0.2:1;
     set(c, 'FontSize', 14);
