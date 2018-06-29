@@ -21,7 +21,7 @@ I_max = 0.27;
 dist = dist_mat(pos,gridsize,gridsize,ex,ey);
 %}
 %%
-maxsteps = 5000;
+maxsteps = 10000;
 
 % Get the number of cells
 N = numel(cells);

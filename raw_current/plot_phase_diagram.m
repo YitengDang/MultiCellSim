@@ -70,6 +70,10 @@ function plot_phase_diagram(gz, a0, rcell, M_int, K_in, Con_in, lambda12)
             0.5, 0.5, 0.5];
         tmp = map([1:4 map_idx], :);
         colormap(subplot(l,1,idx), tmp);
+        c=colorbar;
+        set(c, 'YTick', 1+2/5+4/5*(0:4));
+        set(c, 'TickLabels', {'all>K','all<K','A1','A0',phase});
+        
         %}
 
         % Plot current parameters as points
@@ -112,8 +116,7 @@ function plot_phase_diagram(gz, a0, rcell, M_int, K_in, Con_in, lambda12)
         tick_Con = [1 10:10:Con_max];
         set(gca, 'xtick', tick_K, 'ytick', tick_Con)
 
-        % legend
-        colorbar('TickLabels', {'all>K','all<K','A1','A0',phase});
+        
     end
 
     set(h9, 'Units', 'Inches', 'Position', [1 1 10 9]);

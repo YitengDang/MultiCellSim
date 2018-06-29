@@ -1,5 +1,5 @@
 function [cells_out, changed] = ...
-    update_cells_noise_hill(cells, dist, Son, K, a0, Rcell, noise, hill, prec)
+    update_cells_noise_hill(cells, dist, M_int, Son, K, a0, Rcell, noise, hill, prec)
 % Update cells using noise in a positive feedback loop with finite hill
 % coefficient
 
@@ -21,7 +21,12 @@ Y = M*C0;
 dY = normrnd(0, noise, size(Y)); % Gaussian noise
 Y = Y+dY;
 
-cells_out = Y.^hill./(Y.^hill + K.^hill);
+if M_int==1
+    cells_out = Y.^hill./(Y.^hill + K.^hill);
+elseif M_int==-1
+    cells_out = K.^hill./(Y.^hill + K.^hill);
+end
+
 changed = ~isequal(round(cells_out, prec), round(cells, prec));
 
 

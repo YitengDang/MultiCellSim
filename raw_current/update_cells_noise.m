@@ -1,5 +1,5 @@
 function [cells_out, changed, mom, I] = ...
-    update_cells_noise(cells, dist, Son, K, a0, Rcell, noise)
+    update_cells_noise(cells, dist, M_int, Son, K, a0, Rcell, noise)
 % Update cells using noise in a positive feedback loop with infinite hill
 % coefficient
 
@@ -23,7 +23,7 @@ mom = sum(X.*(Y-K));
 
 I = moranI(cells, a0*dist);
 
-cells_out = Y > K + dK;
+cells_out = M_int*(Y - K + dK) > 0;
 changed = ~isequal(cells_out, cells);
 
 
