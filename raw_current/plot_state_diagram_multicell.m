@@ -1,4 +1,4 @@
-function plot_state_diagram_multicell(gz, a0, rcell, M_int, Con, K, lambda12)
+function [phase, A] = plot_state_diagram_multicell(gz, a0, rcell, M_int, Con, K, lambda12)
 % NB: Coff = [1 1] everywhere here
 
 % Parameters
@@ -16,11 +16,19 @@ Coff = [1 1];
 %K = [3 12; 13 20]; % K(i,j): sensitivity of type i to type j molecules
 lambda = [1 lambda12]; % diffusion length (normalize first to 1)
 
+% Exclude single cell
+if gz==1
+   A = plot_state_diagram_onecell(M_int, Con, Coff, K);
+   phase = [];
+   return 
+end
+
 % calculate fN
+fN = zeros(2,1);
 [dist, ~] = init_dist_hex(gz, gz);
 dist_vec = a0*dist(1,:);
 r = dist_vec(dist_vec>0); % exclude self influence
-fN = zeros(2,1);
+
 fN(1) = sum(sinh(Rcell)*sum(exp((Rcell-r)./lambda(1)).*(lambda(1)./r)) ); % calculate signaling strength
 fN(2) = sum(sinh(Rcell)*sum(exp((Rcell-r)./lambda(2)).*(lambda(2)./r)) ); % calculate signaling strength
 
@@ -31,13 +39,13 @@ R2 = ((repmat(Con + fN'.*Coff, 2, 1) - K) > 0 & (repmat((1+fN').*Coff, 2, 1) - K
 R3 = ((Coff + repmat(fN'.*Con, 2, 1) - K) < 0 & (repmat((1+fN').*Con, 2, 1) - K) > 0) ; % OFF remains OFF & not all OFF
 R4 = (repmat((1+fN').*Con, 2, 1) - K) < 0; % Everything OFF
 
-phase = R1 + 2*R2 + 3*R3 + 4*R4;
-% 0: none (activation-deactivation)
-% 1: all ON(+) / OFF(-)
-% 2: ON->ON (+) / ON-> OFF (-)
-% 3: OFF->OFF (+) / OFF->ON (-)
-% 4: all OFF(+) / ON(-)
-% 5: autonomy (+) / autonomous oscillations (-)
+phase = 1 + R1 + 2*R2 + 3*R3 + 4*R4;
+% 1: none (activation-deactivation)
+% 2: all ON(+) / OFF(-)
+% 3: ON->ON/activation (+) / ON-> OFF (-) 
+% 4: OFF->OFF/deactivation (+) / OFF->ON (-)
+% 5: all OFF(+) / ON(-)
+% 6: autonomy (+) / autonomous oscillations (-)
 
 % Map from phase to diagram
 % state | activation/repression | input molecule (1/2)
@@ -75,16 +83,25 @@ g_map{2,6,2} = [1 0; 1 0];
 gij = cell(2);
 X_out = cell(2, 1);
 for i=1:2
-    for j=1:2
-        if M_int(i,j)~=0
-            idx = (M_int(i,j)==1) + (M_int(i,j)==-1)*2;
-            gij{i,j} = g_map{idx, phase(i,j)+1, j};
-        else
-            gij{i,j} = ones(2); % Fix
+    if all(M_int(i,:)==0)
+        fprintf('No input for gene %d \n', i);
+        % no input => output=initial state
+        X1_in = [0 0; 1 1]; 
+        X2_in = [0 1; 0 1];
+        X_in = (i==1).*X1_in + (i==2).*X2_in; 
+        X_out{i} = X_in;
+    else
+        % normal case
+        for j=1:2
+            if M_int(i,j)~=0
+                idx = (M_int(i,j)==1) + (M_int(i,j)==-1)*2;
+                gij{i,j} = g_map{idx, phase(i,j), j};
+            else
+                gij{i,j} = ones(2); % Fixed ambiguous inputs
+            end
         end
+        X_out{i} = and3(gij{i,1}, gij{i,2}); % three-valued logic
     end
-    X_out{i} = min(gij{i,1}.*gij{i,2}, 2); %easy implementation of AND for 3-val logic
-    % see three_valued_logic.m
 end
 
 %% Display tables
@@ -183,4 +200,12 @@ h10.Color = [1 1 1];
 set(ax, 'Units', 'Inches', 'Position', [0 0 7 6]);
 set(h10, 'Units', 'Inches', 'Position', [0.2 0.2 7 6]);
 
+
+
+end
+
+%% Functions
+% 3-valued AND function (see three_valued_logic.m)
+function out = and3(x,y)
+    out = min(x.*y, 2);
 end

@@ -1,6 +1,14 @@
 function plot_phase_diagram(gz, a0, rcell, M_int, K_in, Con_in, lambda12)
     set(0, 'defaulttextinterpreter', 'latex');
     
+    % Phases (after readjustment)
+    % 1: all ON(+) / OFF(-) 
+    % 2: all OFF(+) / ON(-)
+    % 3: ON->ON/activation (+) / ON-> OFF (-) 
+    % 4: OFF->OFF/deactivation (+) / OFF->ON (-)
+    % 5: none (activation-deactivation)
+    % 6: autonomy (+) / autonomous oscillations (-)
+
     l = size(M_int, 1); %number of molecules
     % plots phase diagrams for each interaction of the system
     Rcell = rcell*a0;

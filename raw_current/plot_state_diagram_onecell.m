@@ -1,5 +1,5 @@
-function plot_state_diagram_onecell(M_int, Con, Coff, K)
-    
+function A = plot_state_diagram_onecell(M_int, Con, Coff, K)
+
 % state transitions
 X_out_sub = cell(2);
 X_out_ind = zeros(4, 1);
