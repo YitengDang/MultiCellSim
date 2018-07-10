@@ -1,4 +1,4 @@
-function A = plot_state_diagram_onecell(M_int, Con, Coff, K)
+function [A, phase] = plot_state_diagram_onecell(M_int, Con, Coff, K)
 
 % state transitions
 X_out_sub = cell(2);
@@ -24,6 +24,9 @@ for X1=0:1
         A(ind, X_out_2) = 1;
     end
 end
+
+%% Calculate phase
+phase = (repmat(Con, 2, 1) > K);
 
 %% Draw state diagram as directed graph
 h8 = figure(8);

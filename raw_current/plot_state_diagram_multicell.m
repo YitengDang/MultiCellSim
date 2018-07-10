@@ -18,8 +18,7 @@ lambda = [1 lambda12]; % diffusion length (normalize first to 1)
 
 % Exclude single cell
 if gz==1
-   A = plot_state_diagram_onecell(M_int, Con, Coff, K);
-   phase = [];
+   [A, phase] = plot_state_diagram_onecell(M_int, Con, Coff, K);
    return 
 end
 
