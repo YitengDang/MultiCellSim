@@ -55,7 +55,8 @@ function plot_phase_diagram(gz, a0, rcell, M_int, K_in, Con_in, lambda12)
         if ~isempty(find(unique(out)==0, 1))
             map_idx = 5; % activation-deactivation
             out(out==0) = 5; 
-            phase = 'non-A';
+            %phase = 'non-A';
+            phase = 'U';
         elseif ~isempty(find(unique(out)==7, 1)) 
             map_idx = 6; % autonomy
             out(out==7) = 5; % ON remains ON & OFF remains OFF
@@ -80,7 +81,10 @@ function plot_phase_diagram(gz, a0, rcell, M_int, K_in, Con_in, lambda12)
         colormap(subplot(l,1,idx), tmp);
         c=colorbar;
         set(c, 'YTick', 1+2/5+4/5*(0:4));
-        set(c, 'TickLabels', {'all>K','all<K','A1','A0',phase});
+        
+        %phase_labels = {'all>K','all<K','A1','A0',phase};
+        phase_labels = {'P1','P0','A1','A0',phase};
+        set(c, 'TickLabels', phase_labels);
         
         %}
 

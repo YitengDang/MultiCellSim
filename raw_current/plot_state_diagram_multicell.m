@@ -1,5 +1,6 @@
-function [phase, A] = plot_state_diagram_multicell(gz, a0, rcell, M_int, Con, K, lambda12)
-% NB: Coff = [1 1] everywhere here
+function [phase, A] = plot_state_diagram_multicell(gz, a0, rcell, M_int, Con, Coff, K, lambda12)
+% Plots the state diagram of the multicellular system with TWO types of
+% signalling molecules
 
 % Parameters
 % lattice parameters
@@ -11,7 +12,7 @@ Rcell = rcell*a0;
 
 % circuit parameters
 %Con = [18 16];
-Coff = [1 1];
+%Coff = [1 1];
 %M_int = [1 1; -1 -1];
 %K = [3 12; 13 20]; % K(i,j): sensitivity of type i to type j molecules
 lambda = [1 lambda12]; % diffusion length (normalize first to 1)
