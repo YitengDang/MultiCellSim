@@ -20,7 +20,8 @@ function update_cell_figure_external(hin, pos, cells_in, cell_type, t, disp_mol,
     Sx = 560;
     Sy = sqrt(3)/2*Sx; %
     a0 = Sx/(1+2*d)/(n+1);
-    Rcell = rcell*a0;
+    f = 1.5; % enlarge cell sizes
+    Rcell = f*rcell*a0;
 
     %%
     % set image properties
