@@ -34,17 +34,22 @@ The GUI consists of (1) a menu at the top, (2) a left box with different tabs, w
 
 #### Visualisation
 
-The graph on the right becomes a visualisation of the multicellular system once you run the simulation. The circles represent the cells and the color their expression level. Generally, a darker color corresponds to a higher expression level. For the binary system, OFF cells are white and ON cells are black. In the continuous system, the darker of the shade of grey, the higher the expression level of the cell. 
-The color bar on the right shows how the colors match to the exact states of the cells. The caption above the figure displays the time (in units of time steps) and statistics of the current figure. Here, p is the mean expression level of the cells and I (optionally displayed) is a spatial index measuring the degree of spatial organisation of the cells (see the Olimpio et al. paper).
+The graph on the right becomes a visualisation of the multicellular system once you run the simulation. The circles represent the cells and the color their expression level. In the case of one signalling molecule, the expression levels are plotted on a grayscale, with darker colors corresponds to a higher expression levels. For the binary system, OFF cells are white and ON cells are black. In the continuous system, the darker of the shade of grey, the higher the expression level of the cell. The color bar on the right shows how the colors match to the exact states of the cells. 
+In the case of two signalling molecules, we display the level of the two molecules using yellow and blue colors. Yellow corresponds to gene 1 and blue corresponds to gene 2. Hence for the binary system, 
+* A white cell corresponds to the state (0,0), where both genes are off.
+* A yellow cell corresponds to the state (1,0), where only gene 1 is on.
+* A blue cell corresponds to the state (0,1), where only gene 2 is on.
+* A black cell corresponds to the state (1,1), where both genes are on.
+The caption above the figure displays the time (in units of time steps) and statistics of the current figure. Here, p is the mean expression level of the cells and I (optionally displayed) is a spatial index measuring the degree of spatial organisation of the cells (see the Olimpio et al. paper).
 
 #### Running the simulation
 
 The controls for running the simulation are based on media playback buttons and should be intuitive to use. Click on the "PLAY" button to run a new simulation. The "PAUSE" button will pause the simulation and resume once you press "PLAY" again. The simulation continues until the system reaches equilibrium (when none of the cells changes state upon updating), or when the maximum simulation time is reached (by default set to tmax = 5000). To stop a current simulation or reset a terminated simulation, press the "STOP" button. This erases the current simulation and all data associated with it, so if you intend to save the simulation, do so before you press "STOP". 
 The four buttons at the bottom are for going through a simulation without running it for more time (Replay mode). The skip forward and backward buttons skip to the start and end of the current simulation. The seek forward and backward buttons move the simulation by one step in time. At any time, the simulation can be run again by pressing "PLAY". If the simulation did not reach equilibrium, it will continue running after the last frame of the replay has been reached. In the "Simulation" menu, there is an additional option "Skip to time" that allows you to directly skip to a time you input. 
-Finally, there is a slider next to the buttons to control the speed of the simulation (i.e. how fast the frames follow each other).
+Finally, the "Simulation speed" slider next to the buttons to control the speed of the simulation or playback (i.e. how fast the frames follow each other).
 
 #### Display signal
-For two types of signals (see below), the simulator only displays the expression of one gene at a time. The "Display signal" button group allows you to toggle between the views of the two states of the cells. 
+For two types of signals (see below), we can plot both at the same time, or focus on one of the two. The "Display signal" button group allows you to toggle between these different views of the cells. Selecting "1" will display the level of gene 1 on a grayscale, "2" displays gene 2 and "both" displays both genes using the color scheme described above.
 
 ### Tabs
 There are three tabs for simulating cells that communicate in different ways.
@@ -84,6 +89,7 @@ The additive interaction has one change in parameter specification compared to t
 The menu on top has a number of options that are useful for plotting results, importing and exporting data and tuning settings of the simulations. 
 
 #### File
+This menu contains the I/O controls as well as controls for closing windows.
 * **Save trajectory**. Saves a simulation trajectory as a '.mat' file. The simulation data is stored as a cell array 'CellsHist' that contains the state of the cell at each time step.
 * **Open trajectory**. Opens a saved trajectory for replaying. The opened trajectory will stay in memory until the "STOP" (reset) button is pushed or a change is made to the parameter tabs. 
 * **Save figures (pdf)**. Saves all opened plots as '*.pdf' after user confirmation for each plot.
@@ -95,7 +101,8 @@ The menu on top has a number of options that are useful for plotting results, im
 This contains the same controls as the buttons (described under 'Running the simulation') below the figure. It also show the shortcuts that can be used in place of pressing the buttons.
 
 #### Plot
-* **Plot p(t)**. Plots a trajectory of p(t) against time for the running simulation. If there are two signals, the plot will contain two lines on the same plot.
+Here you can find options to plot various properties of the running simulation. This only works if you have run or loaded a simulation and have not pressed the STOP button.
+* **Plot p(t)**. Plots a trajectory of p(t) against time. If there are two signals, the plot will contain two lines on the same plot.
 * **Plot I(t)**. Same as above, for I(t).
 * **Plot Theta(t)**. Same as above, for Theta(t)/fN.
 * **Plot (p(t),I(t))**. Plots a trajectory in the (p,I) plane. The starting points are marked by coloured circles, while the endpoints are marked by circles with a cross. If there are two signals, both trajectories will be plotted.
@@ -103,8 +110,16 @@ This contains the same controls as the buttons (described under 'Running the sim
 * **Plot h(t)** (only for 1 signal, binary cell states). Plots the pseudo-energy h(t).
 
 #### Options
+This contains a few optional features for running and displaying the simulations.
 * **Show I**. Selecting this option will display the value of I on top of the figure. This might cause the simulation to run slightly slower.
 * **Initiate with I(t=0)** (only for binary cells). Use the value of I(t=0) - or I1(t=0) and I2(t=0) in case of two signals - for the initial state. If unchecked (default), the system will generate an initial lattice by randomly selecting ON cells according to the value of p(t=0), without regard to the initial spatial order. This typically gives a value for I of around zero, but to be precise (up to 0.01), choose this option. The simulation will then run an algorithm to try to generate a lattice with the input I(t=0). As this is not always possible, the messages will display whether the outcome has been achieved or not. Note that for very high I, this can be a slow process.
+
+#### Properties
+The controls under this menu allow you to examine certain features of the chosen parameter set.
+* **Circuit topology**. This plots the gene circuit under consideration (according to the settings in the selected parameters tab). Blue arrows show activating interactions, red arrows show inhibiting interactions.
+* **Phase diagram**. The phase diagram shows the "phase" of each interaction of the system. The plot is separated into two subplots for each of the signalling molecules. The markers (circles and triangles) show the values of the K and C_ON for a particular interaction. The number next to the marker indicates the gene that the signalling molecule controls. Circles are for activating interactions, triangles for repressive interactions. As a concrete example, a triangle in the lower figure with the number 1 indicates phase and the interaction parameters for a repressive interaction of molecule 2 on gene 1.
+* **State diagram - single cell**. The state diagram shows all allowed transitions between the different states of a cell. In other words, it shows which states a cell can adopt at the next time step given its current state. For one molecule there are two states (0 and 1), for two molecules there are four ((0,0), (0,1), (1,0), (1,1)). The single cell state diagram shows the (deterministic) transitions for each of these states. For instance, an arrow between (0,0) and (1,1) means that a single cell with both genes off will always turn on both genes at the next time step. The diagrams depend on the set of parameters specified in the parameters tab.
+* **State diagram - full system**. For the full system with N>=1 cells, the state diagram shows all possible transitions for any cell in the lattice. Transitions are no longer necessarily deterministic, so certain states can transition to multiple states depending on the states of its neighbours. For instance, a diagram with the (0,0) state linked to both (0,0) and (1,0) indicates that (0,0) cells can transition to either of the two states, depending on the signals they receive from other cells of the lattice.
 
 #### Help
 * **Documentation**. Opens the GitHub page https://github.com/YitengD/Multicellularity.
@@ -118,4 +133,4 @@ Yiteng Dang
 ### License
 MIT Licence
 
-### Last update 04/06/2018
+### Last update 31/07/2018
