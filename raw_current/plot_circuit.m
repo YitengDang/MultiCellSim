@@ -29,7 +29,7 @@ if all(size(M_int)==[1 1])
     
     p1 = plot(0, 0, 'b', 'LineWidth', 2);
     p2 = plot(0, 0, 'r', 'LineWidth', 2);
-    legend([p1 p2], {'activation', 'repression'}, 'FontSize', 16, 'Location', 'best');
+    %legend([p1 p2], {'activation', 'repression'}, 'FontSize', 16, 'Location', 'best');
     
     ax = gca;
     ax.Visible = 'off';
@@ -132,7 +132,7 @@ elseif all(size(M_int)==[2 2])
     % plot legend
     p1 = plot(0, 0, 'b', 'LineWidth', 2);
     p2 = plot(0, 0, 'r', 'LineWidth', 2);
-    legend([p1 p2], {'activation', 'repression'}, 'FontSize', 16, 'Location', 'best');
+    %legend([p1 p2], {'activation', 'repression'}, 'FontSize', 16, 'Location', 'best');
     
     colormap(map);
     ax.Visible = 'off';
