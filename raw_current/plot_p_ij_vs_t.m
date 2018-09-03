@@ -13,7 +13,6 @@ for t=1:20
 end
 %}
 %%
-
 if isempty(cells_hist)
     msg = ' Unable to plot p(t); ';
     return
@@ -48,7 +47,7 @@ elseif s==2
     legend_text = sprintfc("(%d, %d)", [0 0; 0 1; 1 0; 1 1]);
 end
 %}
-%
+
 h1 = figure(1);
 cla(h1, 'reset');
 hold on
