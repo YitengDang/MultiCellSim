@@ -124,8 +124,13 @@ function plot_phase_diagram(gz, a0, rcell, M_int, K_in, Con_in, lambda12)
         title(sprintf('Molecule %d', idx));
 
         % set ticks
-        tick_K = [1 10:10:K_max];
-        tick_Con = [1 10:10:Con_max];
+        if K_max<100 && Con_max<100
+            tick_K = [1 10:10:K_max];
+            tick_Con = [1 10:10:Con_max];
+        else
+            tick_K = [1 K_max/10:K_max/10:K_max];
+            tick_Con = [1 Con_max/10:Con_max/10:Con_max];
+        end
         set(gca, 'xtick', tick_K, 'ytick', tick_Con)
 
         
