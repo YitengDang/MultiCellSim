@@ -8,16 +8,17 @@ function [period, t_onset] = periodicity_test(cells_hist)
     % multiple of the true period.
     
     t_out = numel(cells_hist) - 1;
-    cells_current = cells_hist{end};
+    cells_current = round(cells_hist{end}, 5);
     
     % default values
     period = Inf;
     t_onset = Inf;
     
     % compare with final state
+    % first find onset of periodicity
     for t=0:t_out-2
         %disp(t);
-        cells = cells_hist{t+1};
+        cells = round(cells_hist{t+1}, 5);
         if all(all(cells==cells_current))
             %period = t_out-t;
             t_onset = t;
@@ -25,9 +26,10 @@ function [period, t_onset] = periodicity_test(cells_hist)
         end
     end
     
+    % then find period
     if t_onset<Inf
         for t=t_onset+1:t_out
-            cells = cells_hist{t+1};
+            cells = round(cells_hist{t+1}, 5);
             if all(all(cells==cells_current))
                 period = t-t_onset;
                 break

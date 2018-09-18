@@ -1,4 +1,9 @@
 function [pos, dist, fN0, rejections] = initial_cells_random_markov_periodic(n, mcsteps, rcell)
+% Input: 
+% n = gridsize
+% mcsteps = # MC steps to randomize cell positions. Set to 0 for a regular lattice
+% rcell = radius of the cell in units of a0 (rcell = Rcell/a0)
+
 % Note: even perfect arrangement might not be accepted because distances
 % are rounded off.
 % Places cells randomly in a continuous space
