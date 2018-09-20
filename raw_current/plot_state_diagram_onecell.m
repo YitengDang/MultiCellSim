@@ -1,4 +1,4 @@
-function [A, phase] = plot_state_diagram_onecell(M_int, Con, Coff, K)
+function [A, phase, h] = plot_state_diagram_onecell(M_int, Con, Coff, K)
 % Plots the state diagram of a single cell with ONE or TWO types of
 % signalling molecules
 
@@ -33,7 +33,8 @@ function [A, phase] = plot_state_diagram_onecell(M_int, Con, Coff, K)
         end
         
         %% Draw state diagram (N.B. same code as in plot_state_diagram_multicell_one_signal.m)
-        h = figure(10);
+        h = figure; %(10);
+        h.Name = 'plot_state_diagram_singlecell';
         hold on
         s = [0 1];
         t = [0 0];
@@ -91,7 +92,8 @@ function [A, phase] = plot_state_diagram_onecell(M_int, Con, Coff, K)
         phase = (repmat(Con, 2, 1) > K);
 
         %% Draw state diagram as directed graph
-        h8 = figure(8);
+        h = figure; %(8);
+        h.Name = 'plot_state_diagram_singlecell';
         hold on
         s = [0 1 0 1];
         t = [0 0 1 1];
@@ -105,9 +107,9 @@ function [A, phase] = plot_state_diagram_onecell(M_int, Con, Coff, K)
         ax = gca;
         axis([-0.4 1.4 -0.4 1.4]);
         ax.Visible = 'off';
-        h8.Color = [1 1 1];
+        h.Color = [1 1 1];
         set(ax, 'Units', 'Inches', 'Position', [0 0 7 6]);
-        set(h8, 'Units', 'Inches', 'Position', [0.3 0.3 7 6]);
+        set(h, 'Units', 'Inches', 'Position', [0.3 0.3 7 6]);
     end
 
 end

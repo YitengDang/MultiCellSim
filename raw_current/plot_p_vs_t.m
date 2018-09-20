@@ -1,4 +1,4 @@
-function msg = plot_p_vs_t(cells_hist, fig_pos)
+function [msg, h] = plot_p_vs_t(cells_hist, fig_pos)
 
 if isempty(cells_hist)
     msg = ' Unable to plot p(t); ';
@@ -18,13 +18,13 @@ for i=1:tmax+1
     end
 end
 %%        
-h1 = figure(1);
-cla(h1, 'reset');
+h = figure;
+cla(h, 'reset');
 hold on
 plot_clrs = [1 0 0; 
                 0 0 1];
 if length(cells_hist) < 100
-    ps = 'o-'; lw = 1.5;
+    ps = 'o-'; lw = 1;
 elseif length(cells_hist) < 500
     ps = '.-'; lw = 1;
 else
@@ -41,7 +41,8 @@ set(gca, 'FontSize', 24);
 xlim([0 tmax])
 ylim([0 1]);
 
-set(h1, 'Units', 'inches', 'Position', fig_pos);
+set(h, 'Units', 'inches', 'Position', fig_pos);
+h.Name = 'p_vs_t';
 
 msg = 'Successfully plotted p(t); ';    
 end

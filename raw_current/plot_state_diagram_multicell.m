@@ -1,4 +1,4 @@
-function [phase, A] = plot_state_diagram_multicell(gz, a0, rcell, M_int, Con, Coff, K, lambda12)
+function [phase, A, h] = plot_state_diagram_multicell(gz, a0, rcell, M_int, Con, Coff, K, lambda12)
 % Plots the state diagram of the multicellular system with TWO types of
 % signalling molecules
 
@@ -171,7 +171,8 @@ for i=1:2
 end
 
 %% Draw state diagram
-h10 = figure(10);
+h = figure; %(10);
+h.Name = 'plot_state_diagram_multicell';
 hold on
 s = [0 1 0 1];
 t = [0 0 1 1];
@@ -194,11 +195,11 @@ text(s-0.11,t+0.019,{'(0,0)','(1,0)','(0,1)','(1,1)'}, 'Color', 'w', 'FontSize',
 ax = gca;
 axis([-0.4 1.4 -0.4 1.4]);
 ax.Visible = 'off';
-h10.Color = [1 1 1];
+h.Color = [1 1 1];
 %set(ax, 'Units', 'Inches', 'Position', [0 0 9 8]);
 %set(h2, 'Units', 'Inches', 'Position', [1 1 9 8]);
 set(ax, 'Units', 'Inches', 'Position', [0 0 7 6]);
-set(h10, 'Units', 'Inches', 'Position', [0.2 0.2 7 6]);
+set(h, 'Units', 'Inches', 'Position', [0.2 0.2 7 6]);
 
 
 

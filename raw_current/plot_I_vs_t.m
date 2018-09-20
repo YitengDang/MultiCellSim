@@ -1,4 +1,4 @@
-function msg = plot_I_vs_t(cells_hist, a0, dist, option, fig_pos)
+function [msg, h] = plot_I_vs_t(cells_hist, a0, dist, option, fig_pos)
 % option: 1 = plot I, 2 = plot Theta
 
 str_options = {'I(t)', 'Theta(t)'};
@@ -24,13 +24,13 @@ for i=1:tmax+1
     end
 end
 %%        
-h2 = figure(1+option);
-cla(h2, 'reset');
+h = figure; %(1+option);
+cla(h, 'reset');
 hold on
 plot_clrs = [1 0 0;
              0 0 1];
 if length(cells_hist) < 100
-    lw = 1.5; ps = 'o-';
+    lw = 1; ps = 'o-';
 elseif length(cells_hist) < 500
     lw = 1; ps = '.-';
 else
@@ -41,8 +41,10 @@ for i=1:s
     switch option
         case 1
             y = I(:,i);
+            h.Name = 'I_vs_t';
         case 2
             y = Theta(:,i);
+            h.Name = 'Theta_vs_t';
     end
     clr = plot_clrs(i,:);
     plot(0:tmax, y, ps, 'LineWidth', lw, 'Color', clr);
@@ -57,7 +59,7 @@ set(gca, 'FontSize', 24);
 xlim([0 tmax])
 ylim([-1 1]);
 
-set(h2, 'Units', 'inches', 'Position', fig_pos);
+set(h, 'Units', 'inches', 'Position', fig_pos);
 
 msg = sprintf('Successfully plotted %s; ', str_options{option});  
 end

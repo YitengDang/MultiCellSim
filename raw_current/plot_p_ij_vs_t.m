@@ -1,4 +1,4 @@
-function msg = plot_p_ij_vs_t(cells_hist, fig_pos)
+function [msg, h] = plot_p_ij_vs_t(cells_hist, fig_pos)
 %{
 clear variables
 close all
@@ -15,13 +15,14 @@ end
 %%
 if isempty(cells_hist)
     msg = ' Unable to plot p(t); ';
+    h = [];
     return
 end
 
 s = size(cells_hist{1}, 2);
 
 if s==1 % for 1 gene: just plot p(t)
-    msg = plot_p_vs_t(cells_hist, fig_pos);
+    [msg, h] = plot_p_vs_t(cells_hist, fig_pos);
     return
 end
 
@@ -48,8 +49,8 @@ elseif s==2
 end
 %}
 
-h1 = figure(1);
-cla(h1, 'reset');
+h = figure;
+cla(h, 'reset');
 hold on
 
 set(gca, 'Color', [0.8 0.8 0.8]);
@@ -59,7 +60,7 @@ plot_clrs = [1 1 1;
             0 0 0];
             
 if length(cells_hist) < 100
-    ps = 'o-'; lw = 1.5;
+    ps = 'o-'; lw = 1;
 elseif length(cells_hist) < 500
     ps = '.-'; lw = 1;
 else
@@ -79,7 +80,8 @@ set(gca, 'FontSize', 24);
 xlim([0 tmax])
 ylim([0 1]);
 
-set(h1, 'Units', 'inches', 'Position', fig_pos);
+set(h, 'Units', 'inches', 'Position', fig_pos);
+h.Name = 'pij_vs_t';
 %}
 msg = 'Successfully plotted p_ij(t); '; 
 

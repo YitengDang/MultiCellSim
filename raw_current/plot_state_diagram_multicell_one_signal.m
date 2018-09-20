@@ -55,7 +55,8 @@ function h = plot_state_diagram_multicell_one_signal(gz, a0, rcell, M_int, Con, 
 
     A = A_map{idx, phase};
     %% Draw state diagram
-    h = figure(10);
+    h = figure; %(10);
+    h.Name = 'plot_state_diagram_multicell';
     hold on
     s = [0 1];
     t = [0 0];

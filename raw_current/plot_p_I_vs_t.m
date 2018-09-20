@@ -1,4 +1,4 @@
-function msg = plot_p_I_vs_t(cells_hist, dist, a0, Con, K, fN, option, fig_pos)
+function [msg, h] = plot_p_I_vs_t(cells_hist, dist, a0, Con, K, fN, option, fig_pos)
 % option: 1 = plot (p,I), 2 = plot (p,Theta)
 
 str_options = {'(p(t), I(t))', '(p(t), Theta(t))'};
@@ -36,8 +36,8 @@ for i=1:tmax+1
     end
 end
 %%
-h4 = figure(option+3);
-cla(h4, 'reset');
+h = figure; %(option+3);
+cla(h, 'reset');
 hold on
 
 % plot hamiltonian first
@@ -55,7 +55,7 @@ if s==1
     end
     [p_i,ymesh] = meshgrid(pv, yv);
     contourf(pv, yv, E(p_i, ymesh),'LineStyle', 'none')
-    colormap(h4, 'summer')
+    colormap(h, 'summer')
     c = colorbar();
     c.Label.String = 'h'; 
     c.Label.FontSize = 24;
@@ -117,7 +117,8 @@ xlim([0 1])
 ylim([yv(1) yv(end)]);
 
 % set position
-set(h4, 'Units', 'inches', 'Position', fig_pos);
+set(h, 'Units', 'inches', 'Position', fig_pos);
+h.Name = 'p_I_trajectories'; 
 
 msg = sprintf('Successfully plotted %s; ', str_options{option});  
 end

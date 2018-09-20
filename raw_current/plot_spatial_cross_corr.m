@@ -16,7 +16,7 @@ Jd = 1-J;
 
 [dH_all, dJ_all] = plot_spatial_cross_corr_temp(cells_hist);
 %}
-function [dH, dJ] = plot_spatial_cross_corr(cells_hist, fig_pos)
+function [dH, dJ, h] = plot_spatial_cross_corr(cells_hist, fig_pos)
     if nargin<2
         fig_pos = [0.1 0.1 7 5];
     end
@@ -47,6 +47,7 @@ function [dH, dJ] = plot_spatial_cross_corr(cells_hist, fig_pos)
     
     %% Plot result
     h=figure;
+    h.Name = 'plot_spatial_cross_corr';
     hold on
     plot(0:n_dat-1, dH, 'LineWidth', 1.5);
     plot(0:n_dat-1, dJ, 'LineWidth', 1.5);

@@ -1,4 +1,4 @@
-function plot_phase_diagram(gz, a0, rcell, M_int, K_in, Con_in, lambda12)
+function h = plot_phase_diagram(gz, a0, rcell, M_int, K_in, Con_in, lambda12)
     set(0, 'defaulttextinterpreter', 'latex');
     
     % Phases (after readjustment)
@@ -37,8 +37,9 @@ function plot_phase_diagram(gz, a0, rcell, M_int, K_in, Con_in, lambda12)
     for i=1:l % calculate signaling strength
         fN(i) = sum(sinh(Rcell)*sum(exp((Rcell-r)./lambda(i)).*(lambda(i)./r)) ); 
     end
-
-    h9=figure(9);
+    
+    h = figure; %(9);
+    h.Name = 'plot_phase_diagram';
     for idx=1:l
         subplot(l,1,idx);
         hold on
@@ -136,7 +137,7 @@ function plot_phase_diagram(gz, a0, rcell, M_int, K_in, Con_in, lambda12)
         
     end
 
-    set(h9, 'Units', 'Inches', 'Position', [1 1 10 9]);
+    set(h, 'Units', 'Inches', 'Position', [1 1 10 9]);
     
 end
 %{ 

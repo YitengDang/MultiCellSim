@@ -1,19 +1,21 @@
-function plot_circuit(gz, a0, rcell, M_int, Con, Coff, K, lambda12)
+function h = plot_circuit(gz, a0, rcell, M_int, Con, Coff, K, lambda12)
 % plots genetic circuit
+% h: figure handle
 
 Rcell = rcell*a0;
 [dist, ~] = init_dist_hex(gz, gz);
 dist_vec = a0*dist(1,:);
 r = dist_vec(dist_vec>0); % exclude self influence
 
+h = figure; %(7);
+h.Name = 'plot_circuit';
+hold on 
 if all(size(M_int)==[1 1])
     fN = sum(sinh(Rcell)*sum(exp(Rcell-r)./r)); % calculate signaling strength
     interactions = zeros(1,2);
     interactions(1) = (Con*(1+fN) > K);
     interactions(2) = (Coff*(1+fN) < K);
     
-    h7 = figure(7);
-    hold on 
     G = digraph(1);
     
     color = (M_int==1)*[0 0 1] + (M_int==-1)*[1 0 0];
@@ -33,10 +35,10 @@ if all(size(M_int)==[1 1])
     
     ax = gca;
     ax.Visible = 'off';
-    h7.Color = [1 1 1];
+    h.Color = [1 1 1];
 
     set(ax, 'Units', 'Inches', 'Position', [0 0 4 4]);
-    set(h7, 'Units', 'Inches', 'Position', [1 1 4 4]);
+    set(h, 'Units', 'Inches', 'Position', [1 1 4 4]);
 
 elseif all(size(M_int)==[2 2])
     
@@ -57,8 +59,6 @@ elseif all(size(M_int)==[2 2])
     end
 
     %% Draw gene circuit
-    h7 = figure(7);
-    hold on
     M2 = M_int'; 
     G = digraph(abs(M2));
     s = [-1 1];
@@ -136,10 +136,10 @@ elseif all(size(M_int)==[2 2])
     
     colormap(map);
     ax.Visible = 'off';
-    h7.Color = [1 1 1];
+    h.Color = [1 1 1];
 
     set(ax, 'Units', 'Inches', 'Position', [0 0 8 4]);
-    set(h7, 'Units', 'Inches', 'Position', [1 1 8 4]);
+    set(h, 'Units', 'Inches', 'Position', [1 1 8 4]);
 
     %}
 end
