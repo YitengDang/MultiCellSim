@@ -36,7 +36,8 @@ elseif genes == 12
         for i = Gridsize:-1:1
             for j = i:Gridsize:Gridsize*Gridsize-(Gridsize - i)
                 cell_state = cells_hist{t}(j,:);
-                heat_matrix(t,h_index) = cell_state.*[1 2];
+                %disp(cell_state);
+                heat_matrix(t,h_index) = sum(cell_state.*[1 2]);
                 %{
                 gene_1 = cells_hist{t}(j,1); 
                 gene_2 = cells_hist{t}(j,2);
