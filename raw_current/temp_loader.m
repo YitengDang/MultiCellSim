@@ -23,7 +23,7 @@ save_movie(cells_hist, pos, cell_type, disp_mol, fname_out)
 fig_pos = [1 1 8 6];
 t1 = 40;
 cells_hist_plot = cells_hist(t1+1:end);
-msg = plot_p_vs_t(cells_hist_plot, fig_pos)
+msg = plot_p_vs_t(cells_hist_plot, fig_pos);
 
 %% Save new figure
 folder = fullfile(pwd, 'data', 'time_evolution', 'sample_trajectories');
