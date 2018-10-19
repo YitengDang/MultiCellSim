@@ -1,8 +1,31 @@
 function [cells_out, test, I_out, t_out] = ...
-    generate_I_new(cells, I_min, I_max, dist, a0)
-% This function generates a pattern with the same fraction of ON cells as
-% the vector cells_in and with a spatial order parameter I_target. This is
-% done by try and error, turning ON cells that are close to other ON cells.
+    generate_I_new(cells_in, I_min, I_max, dist, a0, maxsteps)
+% This function tries to generate a pattern with the same fraction of ON cells as
+% the vector cells_in, with spatial order I_min < I < I_max. This is
+% done by trying to turn ON and OFF random cells, taking into account their neighbours
+% For instance, to increase I, it tries to turn on OFF-cells that are close
+% to ON cells. 
+% The output is not guaranteed to produce a configuration with I in the
+% correct range, but will try to get as close to the set range as possible.
+
+% Input:
+% cells - a configuration of cells with the desired fraction of ON cells
+% (p)
+% I_min - lower bound for allowed I
+% I_max - upper bound for allowed I
+% dist - matrix of distances between cells
+% a0 - dimensionless distance between neighbouring cells
+% maxsteps - maximum number of times to try switching cell states (to prevent
+% an infinite loop)
+
+% Output:
+% cells_out - generated configuration of cells
+% I_out - final value of I.
+% t_out - number of trials to generate final pattern
+
+% Suggestion: For I_max = I_min + epsilon, then epsilon = 0.01 should give
+% fairly good results
+
 %{
 clear variables
 close all
@@ -21,21 +44,23 @@ I_max = 0.27;
 dist = dist_mat(pos,gridsize,gridsize,ex,ey);
 %}
 %%
-maxsteps = 10000;
+if nargin<6
+    maxsteps = 10000; 
+end
 
 % Get the number of cells
-N = numel(cells);
-[I, ~] = moranI(cells, a0*dist);
+N = numel(cells_in);
+[I, ~] = moranI(cells_in, a0*dist);
 
 % Check that the lattice is not all ON/OFF or single ON/OFF
-if sum(cells)==N || sum(cells)==0 || sum(cells)==1 || sum(cells)==N-1
+if sum(cells_in)==N || sum(cells_in)==0 || sum(cells_in)==1 || sum(cells_in)==N-1
     check = false;
 else 
     check = true;
 end
 
 % Determine whether to increase or decrease I
-increase = (I < I_min);
+increase = (I < I_min); % 0: decrease I, 1: increase I
 
 % Get first neighbors
 eps = 1e-5;
@@ -54,7 +79,7 @@ t = 0;
 while (I < I_min || I > I_max) && t < maxsteps && check
     %k = waitforbuttonpress;
     t = t+1;
-    cells_new = cells; 
+    cells_new = cells_in; 
 
     % number of neighbors that are ON
     nei_ON = first_nei*cells_new;
@@ -112,13 +137,13 @@ while (I < I_min || I > I_max) && t < maxsteps && check
     % if not sure, check whether I has increased/decreased
     I_new = moranI(cells_new, a0*dist);
     if cond1 && cond2 % conditions met
-        cells = cells_new; % accept change
+        cells_in = cells_new; % accept change
         I = I_new;
     elseif increase && (I_new >= I) % conds not met, but new I increased as required
-        cells = cells_new; % accept change        
+        cells_in = cells_new; % accept change        
         I = I_new;
     elseif (I_new <= I) % conds not met, but new I decreased as required
-        cells = cells_new;
+        cells_in = cells_new;
         I = I_new;
     else
         %disp('rejected!');
@@ -128,7 +153,7 @@ while (I < I_min || I > I_max) && t < maxsteps && check
 end
 
 %% Output
-cells_out = cells;
+cells_out = cells_in;
 test = (I > I_min) && (I < I_max); %Check whether final I is in desired range
 I_out = I;
 t_out = t;
