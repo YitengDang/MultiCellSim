@@ -8,13 +8,13 @@ function [msg, h, h_all] = plot_h_vs_t(cells_hist, dist, a0, Con, K, noise, fig_
 h = [];
 h_all = [];
 if isempty(cells_hist)
-    msg = ' Unable to plot h(t); ';
+    msg = 'Unable to plot h(t); ';
     return
 end
 
 s = size(cells_hist{1}, 2);
 if s>1
-    msg = ' More than 1 signal type. Cannot plot h(t). ';
+    msg = 'Cannot plot h(t). More than 1 signalling molecule.';
     return
 end
 
