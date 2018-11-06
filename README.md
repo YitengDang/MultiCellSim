@@ -8,11 +8,11 @@ More information on the model and research can be found [here](http://youklab.or
 *  T. Maire and H. Youk. [Molecular-level tuning of cellular autonomy controls collective behaviors of cell populations](http://www.youklab.org/papers/CellSystems2015_Maire.pdf). Cell Systems 1, 349–360 (2015).
 * E. P. Olimpio*, Y. Dang*, and H. Youk. [Statistical dynamics of spatial-order formation by communicating cells](http://www.youklab.org/papers/iScience2018_Olimpio_Dang.pdf). iScience 2: 27-40 (2018).
 
-### **For additional information, troubleshooting and a project plan please refer to the [Wiki page](https://github.com/YitengD/Multicellularity/wiki).**
+**For additional information, troubleshooting and a project plan please refer to the [Wiki page](https://github.com/YitengD/Multicellularity/wiki).**
 
 ## Installation
 #### Requirements
-MATLAB (R2018b). If you have an earlier version, the app should still work, but you might need to set up a few steps manually (see below).
+MATLAB (R2018b). Earlier versions of MATLAB from R2016b onwards should also work (manual installation recommended, see below).
 
 #### Instructions
 Using the App Installer:
@@ -144,10 +144,12 @@ An additional feature of the app is the ability to randomize the positions of th
 ### Message box
 Panel H displays messages to guide the user during the simulation. In particular, if certain steps take a long time the app might temporarily freeze, but the message box should display the task which is causing the slowdown.
 
-## Troubleshooting
+---
+
+### Troubleshooting
 A list of known issues can be found under the issues page (https://github.com/YitengDang/Multicellularity/issues). In general, if the simulation gets stuck, try pressing the "STOP" (reset) button to see if it resolves the problem. Restarting the app sometimes also does magic. If you are running the app on a laptop, the responses to user input can be slow and the simulation might not run smoothly. Note also that the app needs to be able to save data to your folders to run. If you installed using the installation package, the folder is likely the default folder in which MATLAB stores apps. If you installed manually, choose a folder where you have write permission to deploy the app. Feel free to report any other issues you find on the issues page. 
 
 ### License
 MIT Licence
 
-### Last update: 5 November 2018
+### Last update: 6 November 2018
