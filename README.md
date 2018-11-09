@@ -10,6 +10,18 @@ More information on the model and research can be found [here](http://youklab.or
 
 **For additional information, troubleshooting and a project plan please refer to the [Wiki page](https://github.com/YitengD/Multicellularity/wiki).**
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/YitengDang/Multicellularity-app/master/screenshots/2-model_72dpi.png" width="600" alt="model overview">
+  </p>
+  <p align="center">
+  <i> Schematic of the model underlying the simulation app. </i>
+</p>
+
+<p align="center">
+  <img src="https://github.com/YitengDang/Multicellularity-app/blob/master/screenshots/3-filmstrip.png?raw=true" alt="pattern example">
+  <i> Example of self-organized pattern observed in a simulation. Snapshots following each other may be separated by different number of time steps. </i> 
+</p>
+
 ## Installation
 #### Requirements
 MATLAB (R2018b). Earlier versions of MATLAB from R2016b onwards should also work (manual installation recommended, see below).
@@ -29,20 +41,31 @@ Manually (recommended for MATLAB versions before R2018b):
 ### Basics
 The GUI consists of (A) a menu at the top, (B) a left box with tabs for simulating with one and two molecules, with editable fields and switches under each tab, (C) a figure displaying the cellular lattice, (D) buttons for simulation control, (E) controls for modifying cell position and size, (F) buttons for switching between different signal displays, (G) a toggle bar for controlling the speed of the simulation and (H) a message box for output messages. Let's go through the components one by one.
 
-![App screenshot labelled 2 signals](https://github.com/YitengDang/Multicellularity-app/blob/master/screenshots/R2_4_screenshot_2_signals_simulation.png?raw=true "App screenshot 2")
-*Fig. 1. Overview of the GUI.*
+<p align="center">
+  <img src="https://github.com/YitengDang/Multicellularity-app/blob/master/screenshots/R2_4_screenshot_2_signals_simulation.png?raw=true" alt="App screenshot two signals">
+</p>
+<p align="center">
+  <i> Overview of the GUI.</i> 
+</p>
 
-![App screenshot 1 signal tab cropped](https://github.com/YitengDang/Multicellularity-app/blob/master/screenshots/R2_4_screenshot_1_signal_simulation_tab_cropped_v2.png?raw=true "App screenshot 1")
-*Fig. 2. For one signal, the parameters tab is simpler.*
+<p align="center">  
+  <img src="https://github.com/YitengDang/Multicellularity-app/blob/master/screenshots/R2_4_screenshot_1_signal_simulation_tab_cropped_v2.png?raw=true" alt="App screenshot one signal">
+</p>
+<p align="center"> 
+  <i> For one signal, the parameters tab is simpler.</i> 
+</p>
 
 #### Visualisation
 Direct visualisation of the multicellular system is presented in the central box (component C). The circles represent the cells and the color their expression level. 
 
 In the case of one signalling molecule, the expression levels are plotted on a grayscale, with darker colors corresponds to a higher expression levels. For the binary system, OFF cells are white and ON cells are black. In the continuous system, the darker of the shade of grey, the higher the expression level of the cell. The color bar on the right shows how the colors match to the exact states of the cells. 
 
-![Gene expression color legend](https://github.com/YitengDang/Multicellularity-app/blob/master/screenshots/colorbar_1_signal_v2.png?raw=true "color legend 1 signal" )
-
-*Fig. 3. Color legend for gene expression of a single gene. Darker colors represent higher relative gene expression level (0 = lowest level, 1 = highest level). For two signals, a similar legend can be made in the app (see below).*
+<p align="center">
+  <img src="https://github.com/YitengDang/Multicellularity-app/blob/master/screenshots/colorbar_1_signal_v2.png?raw=true" alt="Gene expression color legend">
+</p>
+<p align="center">
+  <i> Color legend for gene expression of a single gene. Darker colors represent higher relative gene expression level (0 = lowest level, 1 = highest level). For two signals, a similar legend can be made in the app (see below).</i> 
+</p>
 
 In the case of two signalling molecules, we display the level of the two molecules using yellow and blue colors. Yellow corresponds to gene 1 and blue corresponds to gene 2. Hence for the binary system, 
 * A white cell corresponds to the state (0,0), where both genes are off.
@@ -53,7 +76,7 @@ In the case of two signalling molecules, we display the level of the two molecul
 The caption above the figure displays the time (in units of time steps) and statistics of the current figure. Here, p is the mean expression level of the cells and I (optionally displayed) is a spatial index measuring the degree of spatial organisation of the cells (see the Olimpio et al. paper). In short, if I=0 the system is fully disordered whereas for |I|->1 the system becomes spatially ordered. For cells with continuous gene expression, the degree of yellowness and degree of blueness represent the degree to which genes 1 and 2 are expressed respectively.
 
 #### Running the simulation
-The controls for running the simulation are based on media playback buttons (panel D of Fig. 1). Click on the "PLAY" button to run a new simulation. The "PAUSE" button will pause the simulation and resume once you press "PLAY" again. The simulation continues until the system reaches equilibrium (when none of the cells changes state upon updating), or when the maximum simulation time is reached (by default set to tmax = 10^6). To stop a current simulation or reset a terminated simulation, press the "STOP" button. This erases the current simulation and all data associated with it, so if you intend to save the simulation, do so before you press "STOP". 
+The controls for running the simulation are based on media playback buttons (panel D). Click on the "PLAY" button to run a new simulation. The "PAUSE" button will pause the simulation and resume once you press "PLAY" again. The simulation continues until the system reaches equilibrium (when none of the cells changes state upon updating), or when the maximum simulation time is reached (by default set to tmax = 10^6). To stop a current simulation or reset a terminated simulation, press the "STOP" button. This erases the current simulation and all data associated with it, so if you intend to save the simulation, do so before you press "STOP". 
 
 The four buttons at the bottom are for going through a simulation without running it for more time (Replay mode). The skip forward and backward buttons skip to the start and end of the current simulation. The seek forward and backward buttons move the simulation by one step in time. At any time, the simulation can be run again by pressing "PLAY". If the simulation did not reach equilibrium, it will continue running after the last frame of the replay has been reached. In the "Simulation" menu, there is an additional option "Skip to time" that allows you to directly skip to a time you input. 
 
