@@ -1,49 +1,30 @@
-<deployment-project plugin="plugin.apptool" plugin-version="1.0">
-  <configuration build-checksum="3826053150" file="D:\Multicellularity\app\git_repository\raw_current\Multicellular automaton app.prj" location="D:\Multicellularity\app\git_repository\raw_current" name="Multicellular automaton app" target="target.mlapps" target-name="Package App">
-    <param.appname>Multicellular automaton app</param.appname>
-    <param.authnamewatermark>Yiteng Dang</param.authnamewatermark>
-    <param.email>y.dang@tudelft.nl</param.email>
-    <param.company>TU Delft</param.company>
-    <param.icon />
-    <param.icons />
+<deployment-project plugin="plugin.webdeploy" plugin-version="1.0">
+  <configuration file="H:\My Documents\Multicellular automaton\app\git_repository\release_2_3_full\Multicellularity2.3_1.prj" location="H:\My Documents\Multicellular automaton\app\git_repository\release_2_3_full" name="Multicellularity2.3_1" target="target.webdeploy" target-name="Web App Compiler">
+    <param.appname>Multicellularity_2_3_web</param.appname>
+    <param.version>2.3</param.version>
+    <param.displayname>Multicellularity_web</param.displayname>
+    <param.authnamewatermark>Yiteng</param.authnamewatermark>
     <param.summary>Visualisation of a model for multicellular systems based on secrete-and-sense cells</param.summary>
-    <param.description>Release 2.4
-Documentation on https://github.com/YitengD/Multicellularity
-
-Changes with respect to 2.3:
-&lt;ul&gt;
-&lt;li&gt;
-New interface: unessential features have been discarded and the two signalling molecules with additive interaction has been removed.
-&lt;/li&gt;
-&lt;li&gt;
-Initiate the system with custom input state (loaded from excel file). Save snapshots of a simulation as excel files that can be reloaded with this function.
-&lt;/li&gt;
-&lt;li&gt;
-New plot feature: plot a kymograph (space-time plot) of the states of the cells over time.
-&lt;/li&gt;
-&lt;/ul&gt;</param.description>
-    <param.screenshot>D:\Multicellularity\app\git_repository\screenshots\R2_4_screenshot.png</param.screenshot>
-    <param.version>2.4</param.version>
-    <param.products.name />
-    <param.products.id />
-    <param.products.version />
-    <param.platforms />
-    <param.output>D:\Multicellularity\app\git_repository\release_2_4_full</param.output>
-    <param.guid>812c7283-45cd-41cd-85fc-e52ff87c0cdf</param.guid>
+    <param.screenshot />
+    <param.intermediate>${PROJECT_ROOT}\Multicellularity2.3_1\for_testing</param.intermediate>
+    <param.files.only>${PROJECT_ROOT}\Multicellularity2.3_1\for_redistribution_files_only</param.files.only>
+    <param.output>${PROJECT_ROOT}\Multicellularity2.3_1\for_redistribution</param.output>
+    <param.logdir>${PROJECT_ROOT}\Multicellularity2.3_1</param.logdir>
+    <param.target.type>subtarget.web.app</param.target.type>
+    <param.user.defined.mcr.options />
     <unset>
-      <param.authnamewatermark />
-      <param.email />
-      <param.company />
-      <param.icon />
-      <param.icons />
-      <param.products.name />
-      <param.products.id />
-      <param.products.version />
-      <param.platforms />
+      <param.screenshot />
+      <param.intermediate />
+      <param.files.only />
+      <param.output />
+      <param.logdir />
+      <param.target.type />
+      <param.user.defined.mcr.options />
     </unset>
-    <fileset.main>
-      <file>${PROJECT_ROOT}\app_R2_4_v5_R2018b.mlapp</file>
-    </fileset.main>
+    <fileset.web.main>
+      <file>${PROJECT_ROOT}\app_R2_3_final.mlapp</file>
+    </fileset.web.main>
+    <fileset.resources />
     <fileset.depfun>
       <file>${PROJECT_ROOT}\all_topologies_cycle_finder.m</file>
       <file>${PROJECT_ROOT}\app_icons_media-playback-pause.png</file>
@@ -62,13 +43,11 @@ New plot feature: plot a kymograph (space-time plot) of the states of the cells 
       <file>${PROJECT_ROOT}\init_random_cells_montecarlo.m</file>
       <file>${PROJECT_ROOT}\initial_cells_random_markov_periodic.m</file>
       <file>${PROJECT_ROOT}\moranI.m</file>
-      <file>${PROJECT_ROOT}\periodicity_test_detailed.m</file>
-      <file>${PROJECT_ROOT}\periodicity_test_short.m</file>
+      <file>${PROJECT_ROOT}\periodicity_test.m</file>
       <file>${PROJECT_ROOT}\plot_circuit.m</file>
       <file>${PROJECT_ROOT}\plot_color_map_2D.m</file>
       <file>${PROJECT_ROOT}\plot_h_vs_t.m</file>
       <file>${PROJECT_ROOT}\plot_I_vs_t.m</file>
-      <file>${PROJECT_ROOT}\plot_kymograph.m</file>
       <file>${PROJECT_ROOT}\plot_p_I_vs_t.m</file>
       <file>${PROJECT_ROOT}\plot_p_ij_vs_t.m</file>
       <file>${PROJECT_ROOT}\plot_p_vs_t.m</file>
@@ -80,20 +59,18 @@ New plot feature: plot a kymograph (space-time plot) of the states of the cells 
       <file>${PROJECT_ROOT}\save_figure.m</file>
       <file>${PROJECT_ROOT}\save_movie.m</file>
       <file>${PROJECT_ROOT}\update_cell_figure_external.m</file>
+      <file>${PROJECT_ROOT}\update_cells_noise.m</file>
       <file>${PROJECT_ROOT}\update_cells_noise_hill.m</file>
+      <file>${PROJECT_ROOT}\update_cells_two_signals_add_finite_Hill.m</file>
       <file>${PROJECT_ROOT}\update_cells_two_signals_multiply_finite_Hill.m</file>
     </fileset.depfun>
-    <fileset.resources>
-      <file>${PROJECT_ROOT}\data</file>
-      <file>${PROJECT_ROOT}\selected</file>
-    </fileset.resources>
     <fileset.package />
     <build-deliverables>
-      <file location="D:\Multicellularity\app\git_repository" name="release_2_4_full" optional="false">D:\Multicellularity\app\git_repository\release_2_4_full</file>
+      <file location="${PROJECT_ROOT}\Multicellularity2.3_1\for_testing" name="Multicellularity_2_3_web.ctf" optional="false">H:\My Documents\Multicellular automaton\app\git_repository\release_2_3_full\Multicellularity2.3_1\for_testing\Multicellularity_2_3_web.ctf</file>
     </build-deliverables>
     <workflow />
     <matlab>
-      <root>C:\Program Files\MATLAB\R2018b</root>
+      <root>C:\Program Files\MATLAB\R2018a</root>
       <toolboxes />
     </matlab>
     <platform>
@@ -105,7 +82,7 @@ New plot feature: plot a kymograph (space-time plot) of the states of the cells 
       <vista>false</vista>
       <linux>false</linux>
       <solaris>false</solaris>
-      <osver>10.0</osver>
+      <osver>6.1</osver>
       <os32>false</os32>
       <os64>true</os64>
       <arch>win64</arch>
