@@ -17,43 +17,27 @@ msg = '';
 h = [];
 
 N = size(cells_hist{1},1);
-gz = sqrt(N);
+Gridsize = sqrt(N);
+heat_matrix = zeros(length(cells_hist),N);
 
 if genes == 1 || genes == 2
-    heat_matrix = zeros(length(cells_hist), N);
-
     for t = 1:length(cells_hist)
         h_index = 1;
-        for i = gz:-1:1
-            for j = i:gz:gz*gz-(gz - i)
+        for i = Gridsize:-1:1
+            for j = i:Gridsize:Gridsize*Gridsize-(Gridsize - i)
                  heat_matrix(t,h_index) = cells_hist{t}(j,genes);
                  h_index = h_index + 1;
             end
         end
     end
 elseif genes == 12
-    heat_matrix = zeros(length(cells_hist), N, 3); % RGB colors
-
     for t = 1:length(cells_hist)
         h_index = 1;
-        
-        % get colors for cells
-        cells = cells_hist{t};
-        clrs = 1-cells;
-        c_all = zeros(size(cells, 1), 3); 
-        c_all(:, 3) = clrs(:, 1); % signal 1 present -> Turn on blue channel
-        c_all(:, 1) = clrs(:, 2); % signal 2 present -> Turn on red channel
-        
-        c_all(:, 2) = clrs(:, 1) & clrs(:, 2); % both signals present -> Turn on green channel
-        
-        for i = gz:-1:1
-            for j = i:gz:gz*gz-(gz - i)
-                %cell_state = cells(j,:);
+        for i = Gridsize:-1:1
+            for j = i:Gridsize:Gridsize*Gridsize-(Gridsize - i)
+                cell_state = cells_hist{t}(j,:);
                 %disp(cell_state);
-                % heat_matrix(t, h_index) = sum(cell_state.*[1 2]); % imagesc version
-                
-                heat_matrix(t, h_index, :) = c_all(j, :); % imagesc version
-                
+                heat_matrix(t,h_index) = sum(cell_state.*[1 2]);
                 %{
                 gene_1 = cells_hist{t}(j,1); 
                 gene_2 = cells_hist{t}(j,2);
@@ -79,53 +63,29 @@ else
     error('The genes should be entered as either: 1 (only gene 1 is plotted), 2 (only gene 2 is plotted), or 12 (both plotted)')
 end
 %% Plot 
+% White  -> 00
+% yellow -> 10
+% blue   -> 01
+% black  -> 11
+h = figure;
+h.Name = 'plot_kymograph';
+imagesc(heat_matrix)
+xlabel('Cell number')
+ylabel('Time')
 if genes==1 || genes==2
-    h = figure;
-    h.Name = 'plot_kymograph';
-    imagesc(heat_matrix)
-    xlabel('Cell number')
-    ylabel('Time')
-
     cmap = flipud(gray);
     colormap(cmap)
     title(sprintf('Gene %d',genes))
-    
 elseif genes==12
-    % White  -> 00
-    % red    -> 10
-    % blue   -> 01
-    % black  -> 11
-    h = figure;
-    h.Name = 'plot_kymograph';
-    image(heat_matrix)
-    xlabel('Cell number')
-    ylabel('Time')
-    
-    hold on
-    for ii=1:gz-1
-        plot(ii*[gz gz]+0.5, [0.5 size(heat_matrix, 1)+0.5], '--', 'Color', [0.5 0.5 0.5]);
-    end
-    
-    cmap = flipud(gray);
-    colormap(cmap)
-    title(sprintf('Gene %d',genes))
-    
-    ystep = 20;  
-    set(gca, 'XTick', 2*gz:2*gz:N);
-    set(gca, 'YTick', 1:ystep:size(heat_matrix, 1),...
-        'YTickLabel', sprintfc('%d', 0:ystep:size(heat_matrix, 1)-1) );
-    %{
     mymap = [1 1 1
     1 1 0
     0 0 1
     0 0 0];
     colormap(mymap)
-    %}
     title('Both genes');
 end
 %colorbar
 set(gca, 'FontSize', 16);
-%set(h, 'Units', 'Inches', 'Position', [0 0 10 8]);
 
 msg = 'Successfully plotted kymograph';
 end

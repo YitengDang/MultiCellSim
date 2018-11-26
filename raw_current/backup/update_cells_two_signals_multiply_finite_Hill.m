@@ -3,6 +3,7 @@ function [cells_out, changed] = ...
     Rcell, Con, Coff, K, lambda, hill, noise)
 % Update cells without noise in a positive feedback loop with infinite hill
 % coefficient
+
 N = size(cells, 1);
 
 % Account for self-influence
@@ -42,24 +43,10 @@ elseif hill > 0
     %    ./(K(1,:).^hill+Y.^hill).*abs(M_int(1,:)) + (1-abs(M_int(1,:))).*ones(N,2);
     %fX2 = (Y.^hill.*(1+M_int(2,:))/2 + (K(2,:).^hill.*(1-M_int(2,:))/2))...
     %    ./(K(2,:).^hill+Y.^hill).*abs(M_int(2,:)) + (1-abs(M_int(2,:))).*ones(N,2);
-    %fX1 = (Y.^hill.*(1+M_int(1,:))/2 + (squeeze(K_cells(1,:,:))'.^hill.*(1-M_int(1,:))/2))...
-    %    ./(squeeze(K_cells(1,:,:))'.^hill+Y.^hill).*abs(M_int(1,:)) + (1-abs(M_int(1,:))).*ones(N,2);
-    %fX2 = (Y.^hill.*(1+M_int(2,:))/2 + (squeeze(K_cells(2,:,:))'.^hill.*(1-M_int(2,:))/2))...
-    %    ./(squeeze(K_cells(2,:,:))'.^hill+Y.^hill).*abs(M_int(2,:)) + (1-abs(M_int(2,:))).*ones(N,2);
-    K_cells_1 = squeeze(K_cells(1,:,:))';
-    K_cells_2 = squeeze(K_cells(2,:,:))';
-    
-    fX1 = 1./( 1 + ...
-        ((Y./K_cells_1).*(1-M_int(1,:))/2).^hill + ... % case repression 
-        ((K_cells_1./Y).*(1+M_int(1,:))/2).^hill ... % case activation
-        ).*abs(M_int(1,:)) + ... 
-        (1-abs(M_int(1,:))).*ones(N,2); % case no interaction
-    fX2 = 1./( 1 + ...
-        ((Y./K_cells_2).*(1-M_int(2,:))/2).^hill + ... % case repression 
-        ((K_cells_2./Y).*(1+M_int(2,:))/2).^hill ... % case activation
-        ).*abs(M_int(2,:)) + ... 
-        (1-abs(M_int(2,:))).*ones(N,2); % case no interaction
-
+    fX1 = (Y.^hill.*(1+M_int(1,:))/2 + (squeeze(K_cells(1,:,:))'.^hill.*(1-M_int(1,:))/2))...
+        ./(squeeze(K_cells(1,:,:))'.^hill+Y.^hill).*abs(M_int(1,:)) + (1-abs(M_int(1,:))).*ones(N,2);
+    fX2 = (Y.^hill.*(1+M_int(2,:))/2 + (squeeze(K_cells(2,:,:))'.^hill.*(1-M_int(2,:))/2))...
+        ./(squeeze(K_cells(2,:,:))'.^hill+Y.^hill).*abs(M_int(2,:)) + (1-abs(M_int(2,:))).*ones(N,2);
     X1 = prod(fX1, 2);
     X2 = prod(fX2, 2);
 end

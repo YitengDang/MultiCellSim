@@ -21,7 +21,7 @@ function save_movie(cells_hist, pos, cell_type, disp_mol, fname_out, frame_rate,
     clf(h, 'reset');
     for t=1:length(cells_hist)
         cells = cells_hist{t};
-        update_cell_figure_external(h, pos, cells, cell_type, t, disp_mol, rcell)                
+        update_cell_figure_external(h, pos, cells, cell_type, t-1, disp_mol, rcell)                
         %frames(t) = getframe(h);
         frame = getframe(h);
         writeVideo(myVideo, frame);
@@ -29,10 +29,10 @@ function save_movie(cells_hist, pos, cell_type, disp_mol, fname_out, frame_rate,
     
     cells = cells_hist{t};
     t = t+1;
-    update_cell_figure_external(h, pos, cells, cell_type, t, disp_mol, rcell)                
+    update_cell_figure_external(h, pos, cells, cell_type, t-1, disp_mol, rcell)                
     %frames(t) = getframe(h);
     frame = getframe(h);
     writeVideo(myVideo, frame);
-        
+    
     close(myVideo);
 end

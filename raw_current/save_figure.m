@@ -1,13 +1,14 @@
-function save_figure(h_fig, width, height, path_out, ext, keep_background)
+function save_figure(h_fig, path_out, ext, keep_background)
     % Adjust the height and width of a figure and save it in PDF
-    if nargin<6
+    if nargin<4
         keep_background = 0;
     end
     
     set(h_fig,'Units','Inches');
-    set(h_fig, 'Position', [0 0 width height ])
-    pos = get(h_fig,'Position');
+    %set(h_fig, 'Position', [0 0 width height ]) % use original figure size
+    pos = get(h_fig, 'Position');
     set(h_fig,'PaperPositionMode','Auto','PaperUnits','Inches','PaperSize',[pos(3), pos(4)])
+    set(h_fig,'PaperPositionMode','Auto','PaperSize',[pos(3), pos(4)])
     
     if keep_background
         h_fig.InvertHardcopy = 'off'; % save with current figure background color

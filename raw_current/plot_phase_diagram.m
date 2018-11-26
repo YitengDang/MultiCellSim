@@ -67,17 +67,17 @@ function h = plot_phase_diagram(gz, a0, rcell, M_int, K_in, Con_in, lambda12)
         him = imagesc(K_vec, Con_vec, out);
         %set(him, 'AlphaData', out > 0); % invisible if not from any region
         % R1 -> black
-        % R2 -> white
+        % R2 -> blue %prev. white
         % R3 -> green
         % R4 -> red
-        % activation-deactivation -> magenta
-        % autonomy -> gray
+        % activation-deactivation -> yellow
+        % autonomy -> cyan %prev. gray
         map = [0, 0, 0
-            1, 1, 1
+            0, 0, 1
             0, 1, 0
             1, 0, 0
             1, 1, 0
-            0.5, 0.5, 0.5];
+            0, 1, 1];
         tmp = map([1:4 map_idx], :);
         colormap(subplot(l,1,idx), tmp);
         c=colorbar;
