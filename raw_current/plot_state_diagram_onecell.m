@@ -63,6 +63,9 @@ function [A, phase, h] = plot_state_diagram_onecell(M_int, Con, Coff, K)
         %set(h2, 'Units', 'Inches', 'Position', [1 1 9 8]);
         set(ax, 'Units', 'Inches', 'Position', [0 0 7 4]);
         set(h, 'Units', 'Inches', 'Position', [0.2 0.2 7 4]);
+        
+        %
+        phase = (Con > K);
     elseif all(size(M_int)==[2 2])
         % state transitions
         X_out_sub = cell(2);

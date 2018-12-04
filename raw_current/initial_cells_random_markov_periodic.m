@@ -1,5 +1,5 @@
 function [pos, dist, fN0, rejections] = initial_cells_random_markov_periodic(n, mcsteps, rcell)
-% Input: 
+% Input:  
 % n = gridsize
 % mcsteps = # MC steps to randomize cell positions. Set to 0 for a regular lattice
 % rcell = radius of the cell in units of a0 (rcell = Rcell/a0)
@@ -15,7 +15,7 @@ n = round(L/R/5); % nmax = L/R
 %}
 % Fixed parameters
 Lx = 1;
-R = rcell*Lx/(n+1);
+R = rcell*Lx/(n);
 %---------main code below---------------
 N = n^2;
 

@@ -38,7 +38,7 @@ function h = plot_color_map_2D(ngenes, rows, cols)
                 for col=1:cols
                     y = 1-(row-1)/(rows-1);
                     b = 1-(col-1)/(cols-1);
-                    image(row, col, :) = [y y b];
+                    image(row, col, :) = [y 0 b];
                 end
             end
 

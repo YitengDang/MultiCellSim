@@ -54,9 +54,9 @@ cla(h, 'reset');
 hold on
 
 set(gca, 'Color', [0.8 0.8 0.8]);
-plot_clrs = [1 1 1; 
+plot_clrs = [0 1 0; 
             0 0 1
-            1 1 0
+            1 0 0
             0 0 0];
             
 if length(cells_hist) < 100

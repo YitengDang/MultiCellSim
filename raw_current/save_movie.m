@@ -1,4 +1,4 @@
-function save_movie(cells_hist, pos, cell_type, disp_mol, fname_out, frame_rate, rcell)
+function save_movie(cells_hist, rcell, pos, pos_hist, disp_mol, fname_out, frame_rate)
     %frames = struct('cdata',[],'colormap',[]);
     
     % Options
@@ -10,29 +10,51 @@ function save_movie(cells_hist, pos, cell_type, disp_mol, fname_out, frame_rate,
     % 'Archival' <- unknown ext
     % 'Motion JPEG 2000' <- unknown ext
     
-    % Save movie
+    % Initiate movie
     myVideo = VideoWriter(fname_out, format); %, 'Uncompressed AVI');
     myVideo.FrameRate = frame_rate;  % Default 30
     open(myVideo);
     
     % replay trajectory externally
-    t = 0;
-    h = figure(100);
+    %tt = 0;
+    h = figure;
     clf(h, 'reset');
-    for t=1:length(cells_hist)
-        cells = cells_hist{t};
-        update_cell_figure_external(h, pos, cells, cell_type, t-1, disp_mol, rcell)                
-        %frames(t) = getframe(h);
-        frame = getframe(h);
-        writeVideo(myVideo, frame);
+    
+    if isempty(pos_hist)
+        % same positions every time step
+        [h_cells, h_borders] = reset_cell_figure(h, pos, rcell);
+        for tt=1:length(cells_hist)
+            cells = cells_hist{tt};
+            update_cell_figure_external(h_cells, h_borders, cells, tt, disp_mol, pos);
+            %update_cell_figure_external(h, pos, cells, cell_type, tt-1, disp_mol, rcell)                
+            %frames(t) = getframe(h);
+            frame = getframe(h);
+            writeVideo(myVideo, frame);
+        end
+    else
+        % new positions every time step
+        [h_cells, h_borders] = reset_cell_figure(h, pos, rcell);
+        for tt=1:length(cells_hist)
+            cells = cells_hist{tt};
+            pos = pos_hist{tt};
+            update_cell_figure_external(h_cells, h_borders, cells, tt, disp_mol, pos);
+            %update_cell_figure_external(h, pos, cells, cell_type, tt-1, disp_mol, rcell)                
+            %frames(t) = getframe(h);
+            frame = getframe(h);
+            writeVideo(myVideo, frame);
+        end
     end
     
+    % add final state to show equilibrium (not applicable if not in
+    % equilibrium)
+    %{
     cells = cells_hist{t};
     t = t+1;
-    update_cell_figure_external(h, pos, cells, cell_type, t-1, disp_mol, rcell)                
-    %frames(t) = getframe(h);
+    update_cell_figure_external(h, pos, cells, cell_type, t-1, disp_mol, rcell)     
+    frames(t) = getframe(h);
     frame = getframe(h);
     writeVideo(myVideo, frame);
-    
+    %}
+        
     close(myVideo);
 end

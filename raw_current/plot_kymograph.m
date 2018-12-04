@@ -110,7 +110,20 @@ elseif genes==12
     colormap(cmap)
     title(sprintf('Gene %d',genes))
     
-    ystep = 20;  
+    if length(cells_hist)<10
+       ystep = 1;
+    elseif length(cells_hist)<50
+       ystep = 5;
+    elseif length(cells_hist)<100
+       ystep = 10;
+    elseif length(cells_hist)<500
+       ystep = 50;
+    elseif length(cells_hist)<1000
+       ystep = 100;
+    else
+       ystep = 500;
+    end
+    
     set(gca, 'XTick', 2*gz:2*gz:N);
     set(gca, 'YTick', 1:ystep:size(heat_matrix, 1),...
         'YTickLabel', sprintfc('%d', 0:ystep:size(heat_matrix, 1)-1) );

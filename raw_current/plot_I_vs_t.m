@@ -1,4 +1,4 @@
-function [msg, h] = plot_I_vs_t(cells_hist, a0, dist, option, fig_pos)
+function [msg, h] = plot_I_vs_t(cells_hist, a0, dist, pos_hist, option, fig_pos)
 % option: 1 = plot I, 2 = plot Theta
 
 str_options = {'I(t)', 'Theta(t)'};
@@ -15,12 +15,34 @@ tmax = numel(cells_hist)-1;
 I = zeros(tmax+1, s);
 Theta = zeros(tmax+1, s);
 
-for i=1:tmax+1
-    for j=1:s
-        %cells = cells_hist{i}{j};
-        cells = cells_hist{i};
-        %[I(i,j), Theta(i,j)] = moranI(cells, a0*dist);
-        [I(i,j), Theta(i,j)] = moranI(cells(:, j), a0*dist);
+if isempty(pos_hist)
+    % fixed positions
+    for i=1:tmax+1
+        for j=1:s
+            cells = cells_hist{i};
+            %[I(i,j), Theta(i,j)] = moranI(cells, a0*dist);
+            [I(i,j), Theta(i,j)] = moranI(cells(:, j), a0*dist);
+        end
+    end
+else
+    % moving cells
+    for i=1:tmax+1
+        for j=1:s
+            % calculate new distance each time step
+            gz = sqrt(N);
+            Lx = 1;
+            delx = Lx/gz;
+            dely = sqrt(3)/2*delx;
+            Ly = dely*gz;
+            pos = pos_hist{i};
+            dist = calc_dist_periodic(pos(:,1), pos(:,2), Lx, Ly);
+            
+            % calculate I, Theta
+            %cells = cells_hist{i}{j};
+            cells = cells_hist{i};
+            %[I(i,j), Theta(i,j)] = moranI(cells, a0*dist);
+            [I(i,j), Theta(i,j)] = moranI(cells(:, j), a0*dist);
+        end
     end
 end
 %%        
