@@ -1,6 +1,5 @@
 function [msg, h] = plot_I_vs_t(cells_hist, a0, dist, pos_hist, option, fig_pos)
 % option: 1 = plot I, 2 = plot Theta
-
 str_options = {'I(t)', 'Theta(t)'};
 
 if isempty(cells_hist)
