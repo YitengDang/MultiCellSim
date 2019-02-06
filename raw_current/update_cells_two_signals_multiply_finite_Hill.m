@@ -3,6 +3,11 @@ function [cells_out, changed] = ...
     Rcell, Con, Coff, K, lambda, hill, noise)
 % Update cells without noise in a positive feedback loop with infinite hill
 % coefficient
+% noise: fractional noise term, represents the width of the normal
+% distribution as a fraction of the mean of the noisy parameter
+if noise>1
+    error('Invalid noise term. Input: %.2f, but 0 <= noise <= 1 is required', noise);
+end
 N = size(cells, 1);
 
 % Account for self-influence
@@ -25,9 +30,10 @@ Y = [Y1 Y2];
 
 % Add noise to K
 K_cells = K.*ones(2, 2, N);
-dK = normrnd(0, noise, 2, 2, N);
+%if noise>0
+dK = K_cells.*normrnd(0, noise, 2, 2, N); 
 K_cells = max(K_cells + dK, 1); % do not allow K < 1 = Coff
-
+%end
 %%
 % Multiplicative interaction
 if hill==Inf

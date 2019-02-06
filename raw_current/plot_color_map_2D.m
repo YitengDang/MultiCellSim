@@ -15,8 +15,6 @@ function h = plot_color_map_2D(ngenes, rows, cols)
     switch ngenes
         case 1
             % Plot 1D color map
-            
-           
             image=zeros(rows, cols, 3); %initialize
             for row=1:rows
                 for col=1:cols
@@ -36,9 +34,10 @@ function h = plot_color_map_2D(ngenes, rows, cols)
             image=zeros(rows, cols, 3); %initialize
             for row=1:rows
                 for col=1:cols
-                    y = 1-(row-1)/(rows-1);
+                    r = 1-(row-1)/(rows-1);
                     b = 1-(col-1)/(cols-1);
-                    image(row, col, :) = [y 0 b];
+                    %image(row, col, :) = [y (y+b)/2 b];
+                    image(row, col, :) = [r r*b b];
                 end
             end
 
@@ -51,7 +50,6 @@ function h = plot_color_map_2D(ngenes, rows, cols)
                 '0.2', '0.4', '0.6', '0.8', '1'} );
             set(gca, 'YTick', 0:rows/5:rows, 'YTickLabel', {'0',...
                 '0.2', '0.4', '0.6', '0.8', '1'} );
-            
             set(h, 'Position', [100 100 650 650]);
             
     end

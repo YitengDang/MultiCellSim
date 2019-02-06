@@ -1,7 +1,10 @@
-function [h_cells, h_borders] = reset_cell_figure(ax, pos, rcell)
+function [h_cells, h_borders] = reset_cell_figure(ax, pos, rcell, plot_borders)
     % h_cells: handle of the scatter plot of cell states
     % h_borders: handle of the scatter plot of cell borders
     
+    if nargin<4
+        plot_borders = 0;
+    end
     % format plot
     %ax = hin;
     cla(ax);
@@ -43,7 +46,11 @@ function [h_cells, h_borders] = reset_cell_figure(ax, pos, rcell)
     %markers = {'o', 's'};
 
     h_cells = scatter(pos(:,1), pos(:,2), (2*Rcell_px)^2, c_all, 'filled', 'o');
-    h_borders = scatter(pos(:,1), pos(:,2), (2*Rcell_px)^2, clr_k, 'o'); % plot cell boundaries
+    if plot_borders
+        h_borders = scatter(pos(:,1), pos(:,2), (2*Rcell_px)^2, clr_k, 'o'); % plot cell boundaries
+    else
+        h_borders = [];
+    end
     
     % Plot box outline
     plot([0 Lx], [0 0], 'k--');

@@ -1,6 +1,11 @@
-function save_movie(cells_hist, rcell, pos, pos_hist, disp_mol, fname_out, frame_rate)
+function save_movie(cells_hist, rcell, pos, pos_hist, disp_mol, fname_out,...
+    frame_rate, t_ini, t_out)
     %frames = struct('cdata',[],'colormap',[]);
     
+    if nargin<8
+        t_ini = 0;
+        t_out = length(cells_hist)-1;
+    end
     % Options
     %frame_rate = 5; % frames/second
     format = 'Motion JPEG AVI'; %movie format 
@@ -23,9 +28,9 @@ function save_movie(cells_hist, rcell, pos, pos_hist, disp_mol, fname_out, frame
     if isempty(pos_hist)
         % same positions every time step
         [h_cells, h_borders] = reset_cell_figure(h, pos, rcell);
-        for tt=1:length(cells_hist)
+        for tt=t_ini+1:t_out+1
             cells = cells_hist{tt};
-            update_cell_figure_external(h_cells, h_borders, cells, tt, disp_mol, pos);
+            update_cell_figure_external(h_cells, h_borders, cells, tt-1, disp_mol, pos);
             %update_cell_figure_external(h, pos, cells, cell_type, tt-1, disp_mol, rcell)                
             %frames(t) = getframe(h);
             frame = getframe(h);
@@ -34,10 +39,10 @@ function save_movie(cells_hist, rcell, pos, pos_hist, disp_mol, fname_out, frame
     else
         % new positions every time step
         [h_cells, h_borders] = reset_cell_figure(h, pos, rcell);
-        for tt=1:length(cells_hist)
+        for tt=t_ini+1:t_out+1
             cells = cells_hist{tt};
             pos = pos_hist{tt};
-            update_cell_figure_external(h_cells, h_borders, cells, tt, disp_mol, pos);
+            update_cell_figure_external(h_cells, h_borders, cells, tt-1, disp_mol, pos);
             %update_cell_figure_external(h, pos, cells, cell_type, tt-1, disp_mol, rcell)                
             %frames(t) = getframe(h);
             frame = getframe(h);

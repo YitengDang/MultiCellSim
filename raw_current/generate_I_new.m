@@ -45,7 +45,7 @@ dist = dist_mat(pos,gridsize,gridsize,ex,ey);
 %}
 %%
 if nargin<6
-    maxsteps = 10000; 
+    maxsteps = 10^5; 
 end
 
 % Get the number of cells
@@ -142,7 +142,7 @@ while (I < I_min || I > I_max) && t < maxsteps && check
     elseif increase && (I_new >= I) % conds not met, but new I increased as required
         cells_in = cells_new; % accept change        
         I = I_new;
-    elseif (I_new <= I) % conds not met, but new I decreased as required
+    elseif ~increase && (I_new <= I) % conds not met, but new I decreased as required
         cells_in = cells_new;
         I = I_new;
     else

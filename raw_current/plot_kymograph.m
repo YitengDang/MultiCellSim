@@ -41,10 +41,10 @@ elseif genes == 12
         cells = cells_hist{t};
         clrs = 1-cells;
         c_all = zeros(size(cells, 1), 3); 
-        c_all(:, 3) = clrs(:, 1); % signal 1 present -> Turn on blue channel
-        c_all(:, 1) = clrs(:, 2); % signal 2 present -> Turn on red channel
-        
-        c_all(:, 2) = clrs(:, 1) & clrs(:, 2); % both signals present -> Turn on green channel
+        c_all(:, 3) = clrs(:, 1); % signal 1 absent -> Turn on blue channel
+        c_all(:, 1) = clrs(:, 2); % signal 2 absent -> Turn on red channel
+        c_all(:, 2) = clrs(:, 1).*clrs(:, 2); % signal 1 and signal 2 absent -> turn on green channel
+        %c_all(:, 2) = clrs(:, 1) & clrs(:, 2); % both signals present -> Turn on green channel
         
         for i = gz:-1:1
             for j = i:gz:gz*gz-(gz - i)

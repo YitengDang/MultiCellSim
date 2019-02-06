@@ -1,4 +1,9 @@
-function update_cell_figure_external(h_cells, h_borders, cells, t, disp_mol, pos)  
+function update_cell_figure_external(h_cells, h_borders, cells, t, disp_mol,...
+    pos, plot_borders)  
+    if nargin<7
+        plot_borders = 0;
+    end
+
     % plot title
     title(sprintf('t=%d', t), 'FontSize', 20);
     
@@ -20,7 +25,9 @@ function update_cell_figure_external(h_cells, h_borders, cells, t, disp_mol, pos
         
         % Update cell positions
         set(h_cells, 'xdata', pos(:, 1), 'ydata', pos(:, 2) );
-        set(h_borders, 'xdata', pos(:, 1), 'ydata', pos(:, 2) );
+        if plot_borders
+            set(h_borders, 'xdata', pos(:, 1), 'ydata', pos(:, 2) );
+        end
     else
         cells = cells(:, disp_mol);
         
@@ -31,6 +38,8 @@ function update_cell_figure_external(h_cells, h_borders, cells, t, disp_mol, pos
         
         % Update cell positions
         set(h_cells, 'xdata', pos(:, 1), 'ydata', pos(:, 2) );
-        set(h_borders, 'xdata', pos(:, 1), 'ydata', pos(:, 2) );
+        if plot_borders
+            set(h_borders, 'xdata', pos(:, 1), 'ydata', pos(:, 2) );
+        end
     end
 end
