@@ -1,7 +1,6 @@
 function [h_cells, h_borders] = reset_cell_figure(ax, pos, rcell, plot_borders)
     % h_cells: handle of the scatter plot of cell states
     % h_borders: handle of the scatter plot of cell borders
-    
     if nargin<4
         plot_borders = 0;
     end
@@ -9,6 +8,7 @@ function [h_cells, h_borders] = reset_cell_figure(ax, pos, rcell, plot_borders)
     %ax = hin;
     cla(ax);
     
+    box on
     % calculate figure dimensions
     N = size(pos,1);
     gz = sqrt(N);
@@ -16,10 +16,12 @@ function [h_cells, h_borders] = reset_cell_figure(ax, pos, rcell, plot_borders)
     % all sizes in units of pixels
     Sx = 500; %ax.Position(3); %512;
     Sy = sqrt(3)/2*Sx; %(sqrt(3)/2*(gz-1)+2)/(3/2*(gz+1))*Sx;
-    set(ax, 'Units', 'points', 'Position', [100 100 1.2*Sx 1.2*Sy]);
+    %set(ax, 'Units', 'points', 'Position', [100 100 1.2*Sx 1.2*Sy]);
+    set(ax, 'Units', 'points', 'Position', [100 100 1.1*Sx 1.1*Sy]);
     
     % set image properties (in terms of plot units, e.g. 0 <= x <= 1) 
-    set(gca, 'Units', 'points', 'Position', [0.1*Sx 0.1*Sy Sx Sy]);
+    %set(gca, 'Units', 'points', 'Position', [0.1*Sx 0.1*Sy Sx Sy]);
+    set(gca, 'Units', 'points', 'Position', [0.05*Sx 0.02*Sy Sx Sy]);
     set(gca, 'YTick', [], 'XTick', [], 'Color', [0.8 0.8 0.8]);
     title(gca, 'Simulate dynamics', 'FontSize', 20);
     Lx = 1;

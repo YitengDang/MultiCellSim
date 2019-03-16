@@ -1,14 +1,17 @@
 function save_movie(cells_hist, rcell, pos, pos_hist, disp_mol, fname_out,...
-    frame_rate, t_ini, t_out)
+    frame_rate, format, t_ini, t_out)
     %frames = struct('cdata',[],'colormap',[]);
     
     if nargin<8
+        format = 'Motion JPEG AVI';
+    end
+    if nargin<10
         t_ini = 0;
         t_out = length(cells_hist)-1;
     end
     % Options
     %frame_rate = 5; % frames/second
-    format = 'Motion JPEG AVI'; %movie format 
+    % format = 'MPEG-4'; %'Motion JPEG AVI'; %movie format 
     % 'Motion JPEG AVI' <- default, works best
     % 'Uncompressed AVI' <- high quality(?), large file
     % 'MPEG-4' <- .mp4
@@ -18,13 +21,13 @@ function save_movie(cells_hist, rcell, pos, pos_hist, disp_mol, fname_out,...
     % Initiate movie
     myVideo = VideoWriter(fname_out, format); %, 'Uncompressed AVI');
     myVideo.FrameRate = frame_rate;  % Default 30
+    myVideo.Quality = 50; % Default 75
     open(myVideo);
     
     % replay trajectory externally
     %tt = 0;
     h = figure;
     clf(h, 'reset');
-    
     if isempty(pos_hist)
         % same positions every time step
         [h_cells, h_borders] = reset_cell_figure(h, pos, rcell);
@@ -60,6 +63,5 @@ function save_movie(cells_hist, rcell, pos, pos_hist, disp_mol, fname_out,...
     frame = getframe(h);
     writeVideo(myVideo, frame);
     %}
-        
     close(myVideo);
 end
