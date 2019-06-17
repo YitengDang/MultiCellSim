@@ -1,5 +1,5 @@
 # Multicellular automaton app
-Visualisation of a model for multicellular systems based on secrete-and-sense cells. Continue reading for download and installation instructions, app utilisation guide and more!
+Simulation software of a model for multicellular systems based on secrete-and-sense cells. This guide provides information on the model, instructions for installation and utilisation of the application. As for now, the software is implemented as an application with GUI in MATLAB, so any user with MATLAB can run simulations without writing code. In the future, we plan to release standalone software that does not require MATLAB to run.
 
 ### Background
 How do communicating cells organize themselves spatially and temporally? We modelled cells that secrete and sense the same signalling molecule as a discrete dynamical system. Through tuning properties such as secretion rate, effective distance between cells and noise level we were able to identify various phases, in some of which cells behave autonomously whereas in others they behave collectively. Our goal here is to provide a direct visualisation of the model for you to get acquainted with our model. 
