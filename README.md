@@ -1,4 +1,4 @@
-# Multicellular automaton app
+# MultiCellSim
 Simulation software of a model for multicellular systems based on secrete-and-sense cells. This guide provides information on the model, instructions for installation and utilisation of the application. As for now, the software is implemented as an application with GUI in MATLAB, so any user with MATLAB can run simulations without writing code. In the future, we plan to release standalone software that does not require MATLAB to run.
 
 ### Background
