@@ -1,15 +1,15 @@
 # MultiCellSim
-Simulation software of a model for multicellular systems based on secrete-and-sense cells. This guide provides information on the model, instructions for installation and utilisation of the application. As for now, the software is implemented as an application with GUI in MATLAB, so any user with MATLAB can run simulations without writing code. In the future, we plan to release standalone software that does not require MATLAB to run.
+Simulation software of a model for multicellular systems based on secrete-and-sense cells. This guide provides information on the model, instructions for installation and utilisation of the application. As for now, the software is implemented as an application with GUI in MATLAB, so any user with MATLAB installed can run simulations without writing a single line of code. In the future, we plan to release standalone software that does not require MATLAB to run.
 
 ### Background
-How do communicating cells organize themselves spatially and temporally? We modelled cells that secrete and sense the same signalling molecule as a discrete dynamical system. Through tuning properties such as secretion rate, effective distance between cells and noise level we were able to identify various phases, in some of which cells behave autonomously whereas in others they behave collectively. Our goal here is to provide a direct visualisation of the model for you to get acquainted with our model. 
+How do communicating cells organize themselves spatially and temporally? We modelled cells that secrete and sense the same signalling molecule as a discrete dynamical system. Through tuning properties such as secretion rate, effective distance between cells and noise level we were able to identify various phases, in some of which cells behave autonomously whereas in others they behave collectively. Our goal here is to provide an open-source simulation software of the model, which anyone can use and modify for research or educational purposes (see Licence for details).
 
 More information on the model and research can be found [here](http://youklab.org/research.html). The papers in which the model was first published and further developed are:
 *  T. Maire and H. Youk. [Molecular-level tuning of cellular autonomy controls collective behaviors of cell populations](http://www.youklab.org/papers/CellSystems2015_Maire.pdf). Cell Systems 1, 349–360 (2015).
 * E. P. Olimpio*, Y. Dang*, and H. Youk. [Statistical dynamics of spatial-order formation by communicating cells](http://www.youklab.org/papers/iScience2018_Olimpio_Dang.pdf). iScience 2: 27-40 (2018).
 * Y. Dang, D. Grundel and H. Youk, Cellular Dialogues that enable self-organization of dynamic spatial patterns, Manuscript in preparation (2019)
 
-** Additional information with plans and idea for this project can be found on the [Wiki page](https://github.com/YitengD/Multicellularity/wiki).**
+Additional ideas and background for this project can be found on the [Wiki page](https://github.com/YitengD/Multicellularity/wiki).
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/YitengDang/Multicellularity-app/master/screenshots/2-model_72dpi.png" width="600" alt="model overview">
@@ -31,7 +31,7 @@ MATLAB (R2019a). Earlier versions of MATLAB from R2016b onwards should also work
 Using the App Installer:
 1. Download the .mlappinstall file of the latest release.
 2. Run the MATLAB Installer file. The program should unpack itself and install as an app in MATLAB. 
-3. Run the app from the "Apps" menu in MATLAB.
+3. Run the installed app "MultiCellSim" from the "Apps" menu in MATLAB.
 
 Manually (recommended for MATLAB versions before R2018b):
 1. Download the source files from the release.
@@ -120,10 +120,9 @@ The menu on top has a number of options that are useful for plotting results, im
 This menu contains the I/O controls as well as controls for closing windows.
 * **Save trajectory**. Saves a simulation trajectory as a '.mat' file. The simulation data is stored as a cell array 'CellsHist' that contains the state of the cell at each time step.
 * **Open trajectory**. Opens a saved trajectory for replaying. The opened trajectory will stay in memory until the "STOP" (reset) button is pushed or a change is made to the parameter tabs. 
-* **Save figures (pdf)**. Saves all opened plots as '.pdf' files after user confirmation for each plot.
-* **Save figures (eps)**. Saves all opened plots as '.eps' files after user confirmation for each plot.
-* **Save movie (avi)**. Saves the current trajectory as an '.avi' movie. The user is prompted to specify the range of timesteps to include in the movie, and the format of the movie (from a list of default formats for saving movies using MATLAB).
-* **Save system state (xls)**. Allows the user to save a snapshot of the trajectory as '.xls' file for later use. The snapshot can be reloaded as initial state by selecting "Manually input initial state" under "Options" (see below). Upon selecting, the user is prompted to input the time of the snapshot to be saved.
+* **Save figures**. Saves all opened plots as '.pdf' or '.eps' files. The user is prompted to select the format and to confirm the name for each plot.
+* **Save movie**. Saves the current trajectory as a video. The user is prompted to specify the range of timesteps to include in the movie, and the format of the movie (from a list of default formats for saving movies using MATLAB).
+* **Save system state**. Allows the user to save a snapshot of the trajectory as '.xls' file for later use. The snapshot can be reloaded as initial state by selecting "Manually input initial state" under "Options" (see below). Upon selecting, the user is prompted to input the time of the snapshot to be saved.
 * **Close all figures**. Closes all plots generated by the user.
 * **Close app**. Closes all figures and close the app. It is recommended that you close the app in this way, because closing it by pressing the close button will not close all figures.
 
@@ -150,7 +149,7 @@ This contains a few optional features for running and displaying the simulations
 * **Set default load folder**. Allows the user to specify the default folder that pops up when "Load trajectory" (File Menu) is selected.
 * **Set default save folder**. Allows the user to specify the default folder that pops up when any of the saving functions of the File Menu is selected.
 
-##### Format manual input initial state
+#### Format manual input initial state
 For manually inputting cell states, the user should prepare an excel file with the gene expression levels of all the cells of the system (values between 0 and 1 for each cell). The format of the data can be of the same form as the format of the "cells" variable inside the app (i.e. a Nxl matrix where N="grid size"^2 is the number of cells and l is the number of signalling molecules). However, the user can also input files in a form that is more intuitive given the form of the lattice. For this, specify the cell states in a "grid size" times "grid size" matrix. If there are two molecules, use the first two sheets of the excel file to specify the expression levels of the two different genes. The grid size of the simulation must be set to the same value as that of the loaded excel file to be a valid input.
 
 #### Properties
@@ -188,4 +187,4 @@ A list of known issues can be found under the issues page (https://github.com/Yi
 ### License
 MIT Licence
 
-### Last update: 17 May 2019
+### Last update: 17 July 2019
