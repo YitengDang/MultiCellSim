@@ -1,0 +1,103 @@
+<deployment-project plugin="plugin.apptool" plugin-version="1.0">
+  <configuration build-checksum="1260297950" file="H:\My Documents\Multicellular automaton\app\git_repository\release_2_5_full\MultiCellSim.prj" location="H:\My Documents\Multicellular automaton\app\git_repository\release_2_5_full" name="MultiCellSim" target="target.mlapps" target-name="Package App">
+    <param.appname>MultiCellSim</param.appname>
+    <param.authnamewatermark>Yiteng Dang</param.authnamewatermark>
+    <param.email>y.dang@tudelft.nl</param.email>
+    <param.company>TU Delft</param.company>
+    <param.icon />
+    <param.icons />
+    <param.summary>Visualisation of a model for multicellular systems based on secrete-and-sense cells</param.summary>
+    <param.description>Release 2.5
+Documentation on https://github.com/YitengDang/MultiCellSim</param.description>
+    <param.screenshot />
+    <param.version>2.5</param.version>
+    <param.products.name />
+    <param.products.id />
+    <param.products.version />
+    <param.platforms />
+    <param.output>${PROJECT_ROOT}\release</param.output>
+    <param.guid>459afb2b-ad52-468b-8de5-945a8c732e18</param.guid>
+    <unset>
+      <param.authnamewatermark />
+      <param.email />
+      <param.company />
+      <param.icon />
+      <param.icons />
+      <param.screenshot />
+      <param.products.name />
+      <param.products.id />
+      <param.products.version />
+      <param.platforms />
+    </unset>
+    <fileset.main>
+      <file>${PROJECT_ROOT}\app_R2_5_final_R2019a.mlapp</file>
+    </fileset.main>
+    <fileset.depfun>
+      <file>H:\My Documents\MATLAB\Add-Ons\Apps\MultiCellSim\release_2_5_full\app_icons_media-playback-pause.png</file>
+      <file>H:\My Documents\MATLAB\Add-Ons\Apps\MultiCellSim\release_2_5_full\app_icons_media-playback-start.png</file>
+      <file>H:\My Documents\MATLAB\Add-Ons\Apps\MultiCellSim\release_2_5_full\app_icons_media-playback-stop.png</file>
+      <file>H:\My Documents\MATLAB\Add-Ons\Apps\MultiCellSim\release_2_5_full\app_icons_media-seek-backward.png</file>
+      <file>H:\My Documents\MATLAB\Add-Ons\Apps\MultiCellSim\release_2_5_full\app_icons_media-seek-forward.png</file>
+      <file>H:\My Documents\MATLAB\Add-Ons\Apps\MultiCellSim\release_2_5_full\app_icons_media-skip-backward.png</file>
+      <file>H:\My Documents\MATLAB\Add-Ons\Apps\MultiCellSim\release_2_5_full\app_icons_media-skip-forward.png</file>
+      <file>H:\My Documents\MATLAB\Add-Ons\Apps\MultiCellSim\release_2_5_full\calc_dist_periodic.m</file>
+      <file>H:\My Documents\MATLAB\Add-Ons\Apps\MultiCellSim\release_2_5_full\dist_mat.m</file>
+      <file>H:\My Documents\MATLAB\Add-Ons\Apps\MultiCellSim\release_2_5_full\generate_I_new.m</file>
+      <file>H:\My Documents\MATLAB\Add-Ons\Apps\MultiCellSim\release_2_5_full\get_unique_distances.m</file>
+      <file>H:\My Documents\MATLAB\Add-Ons\Apps\MultiCellSim\release_2_5_full\init_cellpos_hex.m</file>
+      <file>H:\My Documents\MATLAB\Add-Ons\Apps\MultiCellSim\release_2_5_full\init_dist_hex.m</file>
+      <file>H:\My Documents\MATLAB\Add-Ons\Apps\MultiCellSim\release_2_5_full\init_dist_hex_new.m</file>
+      <file>H:\My Documents\MATLAB\Add-Ons\Apps\MultiCellSim\release_2_5_full\init_random_cells_montecarlo.m</file>
+      <file>H:\My Documents\MATLAB\Add-Ons\Apps\MultiCellSim\release_2_5_full\initial_cells_random_markov_periodic.m</file>
+      <file>H:\My Documents\MATLAB\Add-Ons\Apps\MultiCellSim\release_2_5_full\moranI.m</file>
+      <file>H:\My Documents\MATLAB\Add-Ons\Apps\MultiCellSim\release_2_5_full\periodicity_test_detailed.m</file>
+      <file>H:\My Documents\MATLAB\Add-Ons\Apps\MultiCellSim\release_2_5_full\periodicity_test_short.m</file>
+      <file>H:\My Documents\MATLAB\Add-Ons\Apps\MultiCellSim\release_2_5_full\plot_circuit.m</file>
+      <file>H:\My Documents\MATLAB\Add-Ons\Apps\MultiCellSim\release_2_5_full\plot_color_map_2D.m</file>
+      <file>H:\My Documents\MATLAB\Add-Ons\Apps\MultiCellSim\release_2_5_full\plot_h_vs_t.m</file>
+      <file>H:\My Documents\MATLAB\Add-Ons\Apps\MultiCellSim\release_2_5_full\plot_I_vs_t.m</file>
+      <file>H:\My Documents\MATLAB\Add-Ons\Apps\MultiCellSim\release_2_5_full\plot_kymograph.m</file>
+      <file>H:\My Documents\MATLAB\Add-Ons\Apps\MultiCellSim\release_2_5_full\plot_p_I_vs_t.m</file>
+      <file>H:\My Documents\MATLAB\Add-Ons\Apps\MultiCellSim\release_2_5_full\plot_p_ij_vs_t.m</file>
+      <file>H:\My Documents\MATLAB\Add-Ons\Apps\MultiCellSim\release_2_5_full\plot_p_vs_t.m</file>
+      <file>H:\My Documents\MATLAB\Add-Ons\Apps\MultiCellSim\release_2_5_full\plot_phase_diagram.m</file>
+      <file>H:\My Documents\MATLAB\Add-Ons\Apps\MultiCellSim\release_2_5_full\plot_spatial_cross_corr.m</file>
+      <file>H:\My Documents\MATLAB\Add-Ons\Apps\MultiCellSim\release_2_5_full\plot_state_diagram_multicell.m</file>
+      <file>H:\My Documents\MATLAB\Add-Ons\Apps\MultiCellSim\release_2_5_full\plot_state_diagram_multicell_one_signal.m</file>
+      <file>H:\My Documents\MATLAB\Add-Ons\Apps\MultiCellSim\release_2_5_full\plot_state_diagram_onecell.m</file>
+      <file>H:\My Documents\MATLAB\Add-Ons\Apps\MultiCellSim\release_2_5_full\reset_cell_figure.m</file>
+      <file>H:\My Documents\MATLAB\Add-Ons\Apps\MultiCellSim\release_2_5_full\save_figure.m</file>
+      <file>H:\My Documents\MATLAB\Add-Ons\Apps\MultiCellSim\release_2_5_full\save_movie.m</file>
+      <file>H:\My Documents\MATLAB\Add-Ons\Apps\MultiCellSim\release_2_5_full\update_cell_figure_external.m</file>
+      <file>H:\My Documents\MATLAB\Add-Ons\Apps\MultiCellSim\release_2_5_full\update_cell_positions.m</file>
+      <file>H:\My Documents\MATLAB\Add-Ons\Apps\MultiCellSim\release_2_5_full\update_cells_noise_hill.m</file>
+      <file>H:\My Documents\MATLAB\Add-Ons\Apps\MultiCellSim\release_2_5_full\update_cells_two_signals_finite_Hill.m</file>
+      <file>H:\My Documents\Multicellular automaton\app\git_repository\raw_current\all_topologies_cycle_finder.m</file>
+    </fileset.depfun>
+    <fileset.resources />
+    <fileset.package />
+    <build-deliverables>
+      <file location="${PROJECT_ROOT}" name="release" optional="false">H:\My Documents\Multicellular automaton\app\git_repository\release_2_5_full\release</file>
+    </build-deliverables>
+    <workflow />
+    <matlab>
+      <root>C:\Program Files\MATLAB\R2019a</root>
+      <toolboxes />
+    </matlab>
+    <platform>
+      <unix>false</unix>
+      <mac>false</mac>
+      <windows>true</windows>
+      <win2k>false</win2k>
+      <winxp>false</winxp>
+      <vista>false</vista>
+      <linux>false</linux>
+      <solaris>false</solaris>
+      <osver>6.1</osver>
+      <os32>false</os32>
+      <os64>true</os64>
+      <arch>win64</arch>
+      <matlab>true</matlab>
+    </platform>
+  </configuration>
+</deployment-project>
