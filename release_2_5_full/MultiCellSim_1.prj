@@ -1,0 +1,159 @@
+<deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
+  <configuration build-checksum="2647573509" file="D:\Multicellularity\app\git_repository\release_2_5_full\MultiCellSim_1.prj" location="D:\Multicellularity\app\git_repository\release_2_5_full" name="MultiCellSim_1" preferred-package-location="H:\My Documents\Multicellular automaton\app\git_repository\release_2_5_full\MultiCellSim_1\for_redistribution" preferred-package-type="package.type.exe" target="target.ezdeploy.standalone" target-name="Application Compiler">
+    <param.appname>MultiCellSim</param.appname>
+    <param.icon>${PROJECT_ROOT}\MultiCellSim_1_resources\icon.ico</param.icon>
+    <param.icons>
+      <file>${PROJECT_ROOT}\MultiCellSim_1_resources\icon_48.png</file>
+      <file>${PROJECT_ROOT}\MultiCellSim_1_resources\icon_32.png</file>
+      <file>${PROJECT_ROOT}\MultiCellSim_1_resources\icon_24.png</file>
+      <file>${PROJECT_ROOT}\MultiCellSim_1_resources\icon_16.png</file>
+    </param.icons>
+    <param.version>2.5</param.version>
+    <param.authnamewatermark>Yiteng Dang</param.authnamewatermark>
+    <param.email>yitengd@gmail.com</param.email>
+    <param.company>TU Delft</param.company>
+    <param.summary>Visualisation of a model for multicellular systems based on secrete-and-sense cells</param.summary>
+    <param.description>Release 2.5
+Documentation on https://github.com/YitengDang/MultiCellSim</param.description>
+    <param.screenshot>D:\Multicellularity\app\git_repository\screenshots\R2_5_snapshot_icon_square.png</param.screenshot>
+    <param.guid />
+    <param.installpath.string>\TU Delft\MultiCellSim\</param.installpath.string>
+    <param.installpath.combo>option.installpath.programfiles</param.installpath.combo>
+    <param.logo />
+    <param.install.notes />
+    <param.target.install.notes />
+    <param.intermediate>${PROJECT_ROOT}\MultiCellSim_1\for_testing</param.intermediate>
+    <param.files.only>${PROJECT_ROOT}\MultiCellSim_1\for_redistribution_files_only</param.files.only>
+    <param.output>${PROJECT_ROOT}\MultiCellSim_1\for_redistribution</param.output>
+    <param.logdir>${PROJECT_ROOT}\MultiCellSim_1</param.logdir>
+    <param.enable.clean.build>false</param.enable.clean.build>
+    <param.user.defined.mcr.options />
+    <param.target.type>subtarget.standalone</param.target.type>
+    <param.support.packages />
+    <param.web.mcr>true</param.web.mcr>
+    <param.package.mcr>false</param.package.mcr>
+    <param.no.mcr>false</param.no.mcr>
+    <param.web.mcr.name>MyAppInstaller_web</param.web.mcr.name>
+    <param.package.mcr.name>MyAppInstaller_mcr</param.package.mcr.name>
+    <param.no.mcr.name>MyAppInstaller_app</param.no.mcr.name>
+    <param.windows.command.prompt>true</param.windows.command.prompt>
+    <param.create.log>false</param.create.log>
+    <param.log.file />
+    <param.native.matlab>false</param.native.matlab>
+    <param.checkbox>false</param.checkbox>
+    <param.example />
+    <param.help.text>Syntax 
+	  -? 
+	 
+ Input Arguments 
+	 -?  print help on how to use the application 
+	 input arguments</param.help.text>
+    <unset>
+      <param.guid />
+      <param.installpath.string />
+      <param.installpath.combo />
+      <param.logo />
+      <param.install.notes />
+      <param.target.install.notes />
+      <param.intermediate />
+      <param.files.only />
+      <param.output />
+      <param.logdir />
+      <param.enable.clean.build />
+      <param.user.defined.mcr.options />
+      <param.target.type />
+      <param.support.packages />
+      <param.web.mcr />
+      <param.package.mcr />
+      <param.no.mcr />
+      <param.web.mcr.name />
+      <param.package.mcr.name />
+      <param.no.mcr.name />
+      <param.windows.command.prompt />
+      <param.create.log />
+      <param.log.file />
+      <param.native.matlab />
+      <param.checkbox />
+      <param.example />
+    </unset>
+    <fileset.main>
+      <file>${PROJECT_ROOT}\app_R2_5_final_R2019a.mlapp</file>
+    </fileset.main>
+    <fileset.resources />
+    <fileset.package />
+    <fileset.depfun>
+      <file>${PROJECT_ROOT}\all_topologies_cycle_finder.m</file>
+      <file>${PROJECT_ROOT}\app_icons_media-playback-pause.png</file>
+      <file>${PROJECT_ROOT}\app_icons_media-playback-start.png</file>
+      <file>${PROJECT_ROOT}\app_icons_media-playback-stop.png</file>
+      <file>${PROJECT_ROOT}\app_icons_media-seek-backward.png</file>
+      <file>${PROJECT_ROOT}\app_icons_media-seek-forward.png</file>
+      <file>${PROJECT_ROOT}\app_icons_media-skip-backward.png</file>
+      <file>${PROJECT_ROOT}\app_icons_media-skip-forward.png</file>
+      <file>${PROJECT_ROOT}\calc_dist_periodic.m</file>
+      <file>${PROJECT_ROOT}\dist_mat.m</file>
+      <file>${PROJECT_ROOT}\generate_I_new.m</file>
+      <file>${PROJECT_ROOT}\get_unique_distances.m</file>
+      <file>${PROJECT_ROOT}\init_cellpos_hex.m</file>
+      <file>${PROJECT_ROOT}\init_dist_hex.m</file>
+      <file>${PROJECT_ROOT}\init_dist_hex_new.m</file>
+      <file>${PROJECT_ROOT}\init_random_cells_montecarlo.m</file>
+      <file>${PROJECT_ROOT}\initial_cells_random_markov_periodic.m</file>
+      <file>${PROJECT_ROOT}\moranI.m</file>
+      <file>${PROJECT_ROOT}\periodicity_test_detailed.m</file>
+      <file>${PROJECT_ROOT}\periodicity_test_short.m</file>
+      <file>${PROJECT_ROOT}\plot_circuit.m</file>
+      <file>${PROJECT_ROOT}\plot_color_map_2D.m</file>
+      <file>${PROJECT_ROOT}\plot_h_vs_t.m</file>
+      <file>${PROJECT_ROOT}\plot_I_vs_t.m</file>
+      <file>${PROJECT_ROOT}\plot_kymograph.m</file>
+      <file>${PROJECT_ROOT}\plot_p_I_vs_t.m</file>
+      <file>${PROJECT_ROOT}\plot_p_ij_vs_t.m</file>
+      <file>${PROJECT_ROOT}\plot_p_vs_t.m</file>
+      <file>${PROJECT_ROOT}\plot_phase_diagram.m</file>
+      <file>${PROJECT_ROOT}\plot_spatial_cross_corr.m</file>
+      <file>${PROJECT_ROOT}\plot_state_diagram_multicell.m</file>
+      <file>${PROJECT_ROOT}\plot_state_diagram_multicell_one_signal.m</file>
+      <file>${PROJECT_ROOT}\plot_state_diagram_onecell.m</file>
+      <file>${PROJECT_ROOT}\reset_cell_figure.m</file>
+      <file>${PROJECT_ROOT}\save_figure.m</file>
+      <file>${PROJECT_ROOT}\save_movie.m</file>
+      <file>${PROJECT_ROOT}\update_cell_figure_external.m</file>
+      <file>${PROJECT_ROOT}\update_cell_positions.m</file>
+      <file>${PROJECT_ROOT}\update_cells_noise_hill.m</file>
+      <file>${PROJECT_ROOT}\update_cells_two_signals_finite_Hill.m</file>
+    </fileset.depfun>
+    <build-deliverables>
+      <file location="${PROJECT_ROOT}\MultiCellSim_1\for_testing" name="splash.png" optional="false">D:\Multicellularity\app\git_repository\release_2_5_full\MultiCellSim_1\for_testing\splash.png</file>
+      <file location="${PROJECT_ROOT}\MultiCellSim_1\for_testing" name="MultiCellSim.exe" optional="false">D:\Multicellularity\app\git_repository\release_2_5_full\MultiCellSim_1\for_testing\MultiCellSim.exe</file>
+      <file location="${PROJECT_ROOT}\MultiCellSim_1\for_testing" name="readme.txt" optional="true">D:\Multicellularity\app\git_repository\release_2_5_full\MultiCellSim_1\for_testing\readme.txt</file>
+    </build-deliverables>
+    <workflow />
+    <matlab>
+      <root>C:\Program Files\MATLAB\R2019a</root>
+      <toolboxes>
+        <toolbox name="matlabcoder" />
+      </toolboxes>
+      <toolbox>
+        <matlabcoder>
+          <enabled>true</enabled>
+        </matlabcoder>
+      </toolbox>
+    </matlab>
+    <platform>
+      <unix>false</unix>
+      <mac>false</mac>
+      <windows>true</windows>
+      <win2k>false</win2k>
+      <winxp>false</winxp>
+      <vista>false</vista>
+      <linux>false</linux>
+      <solaris>false</solaris>
+      <osver>10.0</osver>
+      <os32>false</os32>
+      <os64>true</os64>
+      <arch>win64</arch>
+      <matlab>true</matlab>
+    </platform>
+  </configuration>
+</deployment-project>
