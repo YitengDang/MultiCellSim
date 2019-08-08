@@ -1,14 +1,15 @@
 # MultiCellSim
-Simulation software of a model for multicellular systems based on secrete-and-sense cells. This guide provides information on the model, instructions for installation and utilisation of the application. As for now, the software is implemented as an application with GUI in MATLAB, so any user with MATLAB installed can run simulations without writing a single line of code. In the future, we plan to release standalone software that does not require MATLAB to run.
+Simulation software of an agent-based multiscale model for a population of communicating cells. This guide provides instructions for installation and utilisation of the application. The software consists of a program with GUI that allows users to simulate and analyse our model without writing code, and comes with various input/output features to store and load simulation data. It is available both for MATLAB users and users without MATLAB. MATLAB users can install MultiCellSim as an app and directly run it from the Apps tab. Non-MATLAB users can download a standalone executable file that installs MATLAB Runtime (no licence required) in addition to MultiCellSim. Our goal here is to provide an open-source simulation software of the model, which anyone can use and modify for research or educational purposes (see Licence for details).
 
 ### Background
-How do communicating cells organize themselves spatially and temporally? We modelled cells that secrete and sense the same signalling molecule as a discrete dynamical system. Through tuning properties such as secretion rate, effective distance between cells and noise level we were able to identify various phases, in some of which cells behave autonomously whereas in others they behave collectively. Our goal here is to provide an open-source simulation software of the model, which anyone can use and modify for research or educational purposes (see Licence for details).
+How do communicating cells self-organize into complex spatiotemporal patterns? We modelled cells that secrete and sense the same set of signalling molecules as a discrete dynamical system. Through tuning molecular parameters such as the secretion rate and response of the cells and the effective distance between cells we observed a rich palette of self-organized patterns, ranging from static islands to collective oscillations and travelling waves. For cells communicating with one signalling molecule, we were able to identify various phases, in some of which cells behave autonomously whereas in others they behave collectively (Maire & Youk, 2015). The collective dynamics of the system is effectively described by an pseudo-energy, where we can picture a ball rolling down a landscape shaped by two macroscopic parameters of the system (Olimpio, Dang & Youk, 2018). The extension to two molecules revealed a surprising variety of dynamic patterns such as oscillations and travelling waves, which we could analyse and predict through an analytic framework we developed (Dang, Grundel & Youk, 2019). 
 
 More information on the model and research can be found [here](http://youklab.org/research.html). The papers in which the model was first published and further developed are:
 *  T. Maire and H. Youk. [Molecular-level tuning of cellular autonomy controls collective behaviors of cell populations](http://www.youklab.org/papers/CellSystems2015_Maire.pdf). Cell Systems 1, 349–360 (2015).
 * E. P. Olimpio*, Y. Dang*, and H. Youk. [Statistical dynamics of spatial-order formation by communicating cells](http://www.youklab.org/papers/iScience2018_Olimpio_Dang.pdf). iScience 2: 27-40 (2018).
-* Y. Dang, D. Grundel and H. Youk, Cellular Dialogues that enable self-organization of dynamic spatial patterns, Manuscript in preparation (2019)
+* Y. Dang, D. Grundel and H. Youk, [Cellular Dialogues that enable self-organization of dynamic spatial patterns](https://doi.org/10.1101/717595), bioRxiv 717595 (2019)
 
+To cite MultiCellSim, please cite the Dang et al. paper, as the software was developed as part of this publication.
 Additional ideas and background for this project can be found on the [Wiki page](https://github.com/YitengD/Multicellularity/wiki).
 
 <p align="center">
@@ -205,4 +206,4 @@ A list of known issues can be found under the issues page (https://github.com/Yi
 ### License
 MIT Licence
 
-### Last update: 17 July 2019
+### Last update: 8 August 2019
