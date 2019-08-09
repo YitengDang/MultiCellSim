@@ -46,17 +46,18 @@ Manually (recommended for MATLAB versions before R2018b):
 It is possible to install and run the full simulation software without installing MATLAB. Instead, the user can simply run executable program that downloads and installs MATLAB Runtime in addition to the application MultiCellSim.
 
 #### Requirements
-Windows PC, 1GB of storage, administrator rights on your PC and a working Internet connection.
+1GB of storage, administrator rights on your PC and a working Internet connection.
 
 #### Instructions
-1. Download the installer "MultiCellSim_Setup.zip" from the latest release and unzip the file.
-2. Run the installer. You will first be prompted to choose the installation folder for the software (default location: C:\Program Files\TU Delft\MultiCellSim) and then for MATLAB Runtime in case you have not installed it before (default location: C:\Program Files\MATLAB\MATLAB Runtime).
+1. Download the zipped installer from the latest release and unzip the file.
+2. Run the installer (.exe file for Windows, .app file for macOS). You will first be prompted to choose the installation folder for the software (default location: C:\Program Files\TU Delft\MultiCellSim) and then for MATLAB Runtime in case you have not installed it before (default location: C:\Program Files\MATLAB\MATLAB Runtime).
 3. The installer will download and install the files for MATLAB Runtime R2019 (no licence required) before installing MultiCellSim. Note that the installation of MATLAB Runtime may take a considerable time due to its size (~786MB in total).
 4. Run the program MultiCellSim. It may take a while to boot. In the meantime, you will be entertained with a snapshot from a simulation.
 Note: as the installation program is an executable file, your PC might consider it unsafe and pass is through your virus scanner first.
 
 #### Uninstalling MultiCellSim
-Uninstall MultiCellSim as you would uninstall any other program on your Windows PC. Go to Control Panel > Programs > Programs and Features, select MultiCellSim and click Uninstall. 
+Uninstall MultiCellSim as you would uninstall any other program on your Windows or macOS PC. 
+In Windows, go to Control Panel > Programs > Programs and Features, select MultiCellSim and click Uninstall. 
 Alternatively, you can manually run the uninstall executable program. First go to the folder in which the software is installed (default: C:\Program Files\TU Delft\MultiCellSim). Go to the subfolder ~\uninstall\bin\win64 (or win32 depending on your PC) and run uninstall.exe.
 Note that uninstalling MultiCellSim does not automatically uninstall MATLAB Runtime.
 
