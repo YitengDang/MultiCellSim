@@ -25,9 +25,11 @@ Additional ideas and background for this project can be found on the [Wiki page]
 </p>
 
 ## Installation
+Please go to the [Releases](https://github.com/YitengDang/MultiCellSim/releases) page to download the latest release of MultiCellSim to follow the instructions below. Alternatively, you can download or clone the entire repository or a subset of it and install MultiCellSim manually.
+
 ### For MATLAB users
 #### Requirements
-MATLAB (R2019a). Earlier versions of MATLAB from R2016b onwards should also work (manual installation recommended, see below).
+MATLAB (R2019a). Earlier versions of MATLAB from R2016b onwards should also work, but we recommend manual installation (see below).
 
 #### Instructions
 Using the App Installer:
@@ -40,21 +42,22 @@ Manually (recommended for MATLAB versions before R2018b):
 2. Move the content to a location in which you have write permission (to store files). Also, make sure the folder is empty to prevent possible conflicts when running the code.
 3. Run the .mlapp file compatible with your MATLAB version to directly run the app. 
 
-### For users without MATLAB
-It is possible to install and run the full simulation software without installing MATLAB. Instead, the user can simply run executable program that downloads and installs MATLAB Runtime in addition to the application MultiCellSim. 
+### For users without MATLAB (beta version)
+It is possible to install and run the full simulation software without installing MATLAB. Instead, the user can simply run executable program that downloads and installs MATLAB Runtime in addition to the application MultiCellSim.
 
 #### Requirements
 1GB of storage, administrator rights on your PC and a working Internet connection.
 
 #### Instructions
-1. Download the installer "MultiCellSim_Setup.zip" from the latest release and unzip the file.
-2. Run the installer. You will first be prompted to choose the installation folder for the software (default location: C:\Program Files\TU Delft\MultiCellSim) and then for MATLAB Runtime in case you have not installed it before (default location: C:\Program Files\MATLAB\MATLAB Runtime).
-3. The installer will download and install the files for MATLAB Runtime (R2019) before installing MultiCellSim. Note that the installation of MATLAB Runtime may take a considerable time due to its size (~786MB in total).
+1. Download the zipped installer from the latest release and unzip the file.
+2. Run the installer (.exe file for Windows, .app file for macOS). You will first be prompted to choose the installation folder for the software (default location: C:\Program Files\TU Delft\MultiCellSim) and then for MATLAB Runtime in case you have not installed it before (default location: C:\Program Files\MATLAB\MATLAB Runtime).
+3. The installer will download and install the files for MATLAB Runtime R2019 (no licence required) before installing MultiCellSim. Note that the installation of MATLAB Runtime may take a considerable time due to its size (~786MB in total).
 4. Run the program MultiCellSim. It may take a while to boot. In the meantime, you will be entertained with a snapshot from a simulation.
 Note: as the installation program is an executable file, your PC might consider it unsafe and pass is through your virus scanner first.
 
 #### Uninstalling MultiCellSim
-Uninstall MultiCellSim as you would uninstall any other program on your Windows PC. Go to Control Panel > Programs > Programs and Features, select MultiCellSim and click Uninstall. 
+Uninstall MultiCellSim as you would uninstall any other program on your Windows or macOS PC. 
+In Windows, go to Control Panel > Programs > Programs and Features, select MultiCellSim and click Uninstall. 
 Alternatively, you can manually run the uninstall executable program. First go to the folder in which the software is installed (default: C:\Program Files\TU Delft\MultiCellSim). Go to the subfolder ~\uninstall\bin\win64 (or win32 depending on your PC) and run uninstall.exe.
 Note that uninstalling MultiCellSim does not automatically uninstall MATLAB Runtime.
 
@@ -118,20 +121,20 @@ The first tab is for simulating a system where the cells communicate through one
 * **a0**. Effective distance between the cells. This sets the interaction strength between the cells. A small value of a0 corresponds to strongly interacting cells, whereas for large a0 cells have little influence on each other.
 * **K**. Sensing threshold. In the binary system with activating interaction, this sets the threshold for the concentration cells must sense to turn ON. In the continuous system, this is the sensed concentration at which the cells are exactly halfway between their lowest and highest expression levels.
 * **Con**. Maximum secretion rate. This is the secretion rate attained by ON cells in the binary system, or the maximum secretion rate in the continuous system.
-* **Noise**. Stochasticity is modelled as a stochastic term in the sensing threshold K. The value of this field sets the strength of the fluctuations of K. 
+* **Noise**. Stochasticity is modelled as a stochastic term in the sensing threshold K. The value of this field sets the strength of the fluctuations of K. Specifically, we model the noise as an additive normally distributed stochastic variable and the noise coefficient sets the width (standard deviation) of the Gaussian in units of K.
 * **Hill coefficient**. Sets the steepness of the response function. A high Hill coefficient corresponds to a sharp response around the value of K, whereas a low value corresponds to a gradual response. By default, it it set to 'Inf' to simulate the binary system. 
 * **p(t=0)**. Initial mean expression level of the system (values between 0 and 1). In the binary system, this corresponds to the initial fraction of ON cells. 
-* **I(t=0)**. Initial spatial index of the system (values between -1 and 1). A value of 0 corresponds to a random distribution of cell states across space, whereas a value close to 1 (-1) corresponds to cell states that are positively (negatively) correlated with each other in space.
+* **I(t=0)**. Initial spatial index of the system (values between -1 and 1). A value of 0 corresponds to a random distribution of cell states across space, whereas a value close to 1 (-1) corresponds to cell states that are positively (negatively) correlated with each other in space. In order to use this function, the user must first select "Initiate with I(t=0)" from the Options menu. Otherwise, the system will be initiated without constraints on the initial spatial index.
 
 #### Tab 2 signals
 This tab is for simulating cells that communicate through two types of signalling molecule, which we assume do not directly interfere with each other. However, both are able to influence the state of the cell, and can do so in different ways. This tab is for simulating multiplicative interactions, where the effects to the the two signaling molecules multiply. This corresponds to an AND logic gate in the case of step-function responses. Biophysically, multiplicative interactions can happen when there is a gene with multiple promoters, that requires activators to be bound to all promoters before the gene is transcribed. Concretely, an example of multiplicative interaction is a cell that upregulates its expression of gene 1 only if it senses a high concentration of both signal 1 and signal 2. If one of the two has a low level, the cell will not upregulate its expression level. 
 
 In this case, there is a number of changes in the parameters that describe the system:
 * **lambda12**. This is the ratio between the diffusion length of the two signalling molecules. The diffusion length sets a typical length scale for the decay of the signalling molecule surrounding a given cell. All lengths in the system are expressed with respect to lambda1, the diffusion length of molecule 1. 
-* **K** = K_ij. Instead of a having a single threshold K (for infinite Hill coefficient), we now have a threshold for each interaction of the system. With two molecules, there are four interactions.
+* **K** = K_ij. Instead of a having a single threshold K (for infinite Hill coefficient), we now have a threshold for each interaction of the system. With two molecules, there are four interactions. The noise term is still in units of the thresholds (see above), so we have a different normalisation for each noise term.
 * **Con** = Con_i. Likewise, the two signalling molecules can have different maximum production rates. In addition, there is also the 'OFF' production rate for each gene, Coff_i, which can be different from each other. For simplicity, however, we set Coff_i=1 for all genes.
 * **p1(t=0), p2(t=0)**. We define a mean expression level for each of the two genes. As initial condition we can then set the average gene expression for both genes. 
-* **I1(t=0), I2(t=0)**. Likewise, we define spatial indices for both types of molecules. The two spatial indices are independent of each other for any fixed configuration of the system.
+* **I1(t=0), I2(t=0)**. Likewise, we define spatial indices for both types of molecules. The two spatial indices are independent of each other for any fixed configuration of the system. In order to use this function, the user must first select "Initiate with I(t=0)" from the Options menu. Otherwise, the system will be initiated without constraints on the initial spatial index.
 
 ### Menu (Panel A) 
 The menu on top has a number of options that are useful for plotting results, importing and exporting data and tuning settings of the simulations. 
@@ -207,4 +210,4 @@ A list of known issues can be found under the issues page (https://github.com/Yi
 ### License
 MIT Licence
 
-### Last update: 8 August 2019
+### Last update: 9 August 2019
