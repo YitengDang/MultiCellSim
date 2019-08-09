@@ -8,6 +8,9 @@ if (abs(M_int)~=1)
     error('M_int has the wrong form');
     return
 end
+if noise>1
+    error('Invalid noise term. Input: %.2f, but 0 <= noise <= 1 is required', noise);
+end
 
 % Account for self-influence
 idx = dist>0;
@@ -24,7 +27,7 @@ Y = M*C0;
 
 %dY = noise*sqrt(Y); % noise a la Berg-Purcell
 %Y = Y + dY.*(2*rand(size(Y))-1);
-dK = normrnd(0, noise, size(Y)); % Gaussian noise
+dK = K*normrnd(0, noise, size(Y)); % Gaussian noise
 K = K+dK;
 
 if hill==Inf
