@@ -1,0 +1,106 @@
+<deployment-project plugin="plugin.apptool" plugin-version="1.0">
+  <configuration build-checksum="675800420" file="M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\release_2_6_full\MultiCellSim.prj" location="M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\release_2_6_full" name="MultiCellSim" target="target.mlapps" target-name="Package App">
+    <param.appname>MultiCellSim</param.appname>
+    <param.authnamewatermark>Yiteng Dang</param.authnamewatermark>
+    <param.email>y.dang@tudelft.nl</param.email>
+    <param.company>TU Delft</param.company>
+    <param.icon />
+    <param.icons />
+    <param.summary>Visualisation of a model for multicellular systems based on secrete-and-sense cells</param.summary>
+    <param.description>Release 2.6
+Documentation on https://github.com/YitengDang/MultiCellSim</param.description>
+    <param.screenshot>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\screenshots\R2_5_snapshot_icon_square.png</param.screenshot>
+    <param.version>2.6</param.version>
+    <param.products.name />
+    <param.products.id />
+    <param.products.version />
+    <param.platforms />
+    <param.output>${PROJECT_ROOT}</param.output>
+    <param.guid>3c09e309-b39e-4ed9-b8c8-859579b71f17</param.guid>
+    <unset>
+      <param.authnamewatermark />
+      <param.email />
+      <param.company />
+      <param.icon />
+      <param.icons />
+      <param.products.name />
+      <param.products.id />
+      <param.products.version />
+      <param.platforms />
+      <param.output />
+    </unset>
+    <fileset.main>
+      <file>${PROJECT_ROOT}\app_R2_6_final.mlapp</file>
+    </fileset.main>
+    <fileset.depfun>
+      <file>H:\My Documents\Multicellularity-codes\functions\manual_input_state.m</file>
+      <file>H:\My Documents\Multicellularity-codes\functions\update_cell_figure_continuum.m</file>
+      <file>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\all_topologies_cycle_finder.m</file>
+      <file>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\app_icons_media-playback-pause.png</file>
+      <file>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\app_icons_media-playback-start.png</file>
+      <file>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\app_icons_media-playback-stop.png</file>
+      <file>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\app_icons_media-seek-backward.png</file>
+      <file>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\app_icons_media-seek-forward.png</file>
+      <file>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\app_icons_media-skip-backward.png</file>
+      <file>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\app_icons_media-skip-forward.png</file>
+      <file>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\calc_dist.m</file>
+      <file>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\calc_dist_periodic.m</file>
+      <file>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\dist_mat.m</file>
+      <file>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\generate_I_new.m</file>
+      <file>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\get_unique_distances.m</file>
+      <file>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\init_cellpos_hex.m</file>
+      <file>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\init_dist_hex.m</file>
+      <file>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\init_dist_hex_new.m</file>
+      <file>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\init_random_cells_montecarlo.m</file>
+      <file>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\initial_cells_random_markov.m</file>
+      <file>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\moranI.m</file>
+      <file>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\periodicity_test_detailed.m</file>
+      <file>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\periodicity_test_short.m</file>
+      <file>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\plot_circuit.m</file>
+      <file>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\plot_color_map_2D.m</file>
+      <file>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\plot_h_vs_t.m</file>
+      <file>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\plot_I_vs_t.m</file>
+      <file>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\plot_kymograph.m</file>
+      <file>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\plot_p_I_vs_t.m</file>
+      <file>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\plot_p_ij_vs_t.m</file>
+      <file>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\plot_p_vs_t.m</file>
+      <file>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\plot_phase_diagram.m</file>
+      <file>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\plot_spatial_cross_corr.m</file>
+      <file>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\plot_state_diagram_multicell.m</file>
+      <file>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\plot_state_diagram_multicell_one_signal.m</file>
+      <file>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\plot_state_diagram_onecell.m</file>
+      <file>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\reset_cell_figure.m</file>
+      <file>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\save_figure.m</file>
+      <file>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\save_movie.m</file>
+      <file>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\update_cell_figure_external.m</file>
+      <file>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\update_cell_positions.m</file>
+      <file>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\update_cells_noise_hill.m</file>
+      <file>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\update_cells_two_signals_finite_Hill.m</file>
+    </fileset.depfun>
+    <fileset.resources />
+    <fileset.package />
+    <build-deliverables>
+      <file location="M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository" name="release_2_6_full" optional="false">M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\release_2_6_full</file>
+    </build-deliverables>
+    <workflow />
+    <matlab>
+      <root>C:\Program Files\MATLAB\R2019a</root>
+      <toolboxes />
+    </matlab>
+    <platform>
+      <unix>false</unix>
+      <mac>false</mac>
+      <windows>true</windows>
+      <win2k>false</win2k>
+      <winxp>false</winxp>
+      <vista>false</vista>
+      <linux>false</linux>
+      <solaris>false</solaris>
+      <osver>6.1</osver>
+      <os32>false</os32>
+      <os64>true</os64>
+      <arch>win64</arch>
+      <matlab>true</matlab>
+    </platform>
+  </configuration>
+</deployment-project>

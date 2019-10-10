@@ -1,37 +1,89 @@
-<deployment-project plugin="plugin.apptool" plugin-version="1.0">
-  <configuration build-checksum="2513296442" file="M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current\MultiCellSim.prj" location="M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current" name="MultiCellSim" target="target.mlapps" target-name="Package App">
+<deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
+  <configuration file="M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\release_2_6_full\MultiCellSim_1.prj" location="M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\release_2_6_full" name="MultiCellSim_1" target="target.ezdeploy.standalone" target-name="Application Compiler">
     <param.appname>MultiCellSim</param.appname>
+    <param.icon>${PROJECT_ROOT}\MultiCellSim_1_resources\icon.ico</param.icon>
+    <param.icons>
+      <file>${PROJECT_ROOT}\MultiCellSim_1_resources\icon_48.png</file>
+      <file>${PROJECT_ROOT}\MultiCellSim_1_resources\icon_32.png</file>
+      <file>${PROJECT_ROOT}\MultiCellSim_1_resources\icon_24.png</file>
+      <file>${PROJECT_ROOT}\MultiCellSim_1_resources\icon_16.png</file>
+    </param.icons>
+    <param.version>2.6</param.version>
     <param.authnamewatermark>Yiteng Dang</param.authnamewatermark>
-    <param.email>y.dang@tudelft.nl</param.email>
+    <param.email>yitengd@gmail.com</param.email>
     <param.company>TU Delft</param.company>
-    <param.icon />
-    <param.icons />
     <param.summary>Visualisation of a model for multicellular systems based on secrete-and-sense cells</param.summary>
     <param.description>Release 2.6
 Documentation on https://github.com/YitengDang/MultiCellSim</param.description>
     <param.screenshot>M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\screenshots\R2_5_snapshot_icon_square.png</param.screenshot>
-    <param.version>2.6</param.version>
-    <param.products.name />
-    <param.products.id />
-    <param.products.version />
-    <param.platforms />
-    <param.output>${PROJECT_ROOT}</param.output>
-    <param.guid>e1acb4bc-bf07-40dd-af18-a3a461412210</param.guid>
+    <param.guid />
+    <param.installpath.string>\TU Delft\MultiCellSim\</param.installpath.string>
+    <param.installpath.combo>option.installpath.programfiles</param.installpath.combo>
+    <param.logo />
+    <param.install.notes />
+    <param.target.install.notes />
+    <param.intermediate>${PROJECT_ROOT}\MultiCellSim_1\for_testing</param.intermediate>
+    <param.files.only>${PROJECT_ROOT}\MultiCellSim_1\for_redistribution_files_only</param.files.only>
+    <param.output>${PROJECT_ROOT}\MultiCellSim_1\for_redistribution</param.output>
+    <param.logdir>${PROJECT_ROOT}\MultiCellSim_1</param.logdir>
+    <param.enable.clean.build>false</param.enable.clean.build>
+    <param.user.defined.mcr.options />
+    <param.target.type>subtarget.standalone</param.target.type>
+    <param.support.packages />
+    <param.web.mcr>true</param.web.mcr>
+    <param.package.mcr>false</param.package.mcr>
+    <param.no.mcr>false</param.no.mcr>
+    <param.web.mcr.name>MyAppInstaller_web</param.web.mcr.name>
+    <param.package.mcr.name>MyAppInstaller_mcr</param.package.mcr.name>
+    <param.no.mcr.name>MyAppInstaller_app</param.no.mcr.name>
+    <param.windows.command.prompt>true</param.windows.command.prompt>
+    <param.create.log>false</param.create.log>
+    <param.log.file />
+    <param.native.matlab>false</param.native.matlab>
+    <param.checkbox>false</param.checkbox>
+    <param.example />
+    <param.help.text>Syntax 
+	  -? 
+	 
+ Input Arguments 
+	 -?  print help on how to use the application 
+	 input arguments</param.help.text>
     <unset>
       <param.authnamewatermark />
       <param.email />
       <param.company />
-      <param.icon />
-      <param.icons />
-      <param.products.name />
-      <param.products.id />
-      <param.products.version />
-      <param.platforms />
+      <param.guid />
+      <param.installpath.string />
+      <param.installpath.combo />
+      <param.logo />
+      <param.install.notes />
+      <param.target.install.notes />
+      <param.intermediate />
+      <param.files.only />
       <param.output />
+      <param.logdir />
+      <param.enable.clean.build />
+      <param.user.defined.mcr.options />
+      <param.target.type />
+      <param.support.packages />
+      <param.web.mcr />
+      <param.package.mcr />
+      <param.no.mcr />
+      <param.web.mcr.name />
+      <param.package.mcr.name />
+      <param.no.mcr.name />
+      <param.windows.command.prompt />
+      <param.create.log />
+      <param.log.file />
+      <param.native.matlab />
+      <param.checkbox />
+      <param.example />
     </unset>
     <fileset.main>
-      <file>${PROJECT_ROOT}\app_R2_6_v1.mlapp</file>
+      <file>${PROJECT_ROOT}\app_R2_6_final.mlapp</file>
     </fileset.main>
+    <fileset.resources />
+    <fileset.package />
     <fileset.depfun>
       <file>H:\My Documents\Multicellularity-codes\functions\manual_input_state.m</file>
       <file>H:\My Documents\Multicellularity-codes\functions\update_cell_figure_continuum.m</file>
@@ -77,10 +129,10 @@ Documentation on https://github.com/YitengDang/MultiCellSim</param.description>
       <file>${PROJECT_ROOT}\update_cells_noise_hill.m</file>
       <file>${PROJECT_ROOT}\update_cells_two_signals_finite_Hill.m</file>
     </fileset.depfun>
-    <fileset.resources />
-    <fileset.package />
     <build-deliverables>
-      <file location="M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository" name="raw_current" optional="false">M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\raw_current</file>
+      <file location="${PROJECT_ROOT}\MultiCellSim_1\for_testing" name="readme.txt" optional="true">M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\release_2_6_full\MultiCellSim_1\for_testing\readme.txt</file>
+      <file location="${PROJECT_ROOT}\MultiCellSim_1\for_testing" name="splash.png" optional="false">M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\release_2_6_full\MultiCellSim_1\for_testing\splash.png</file>
+      <file location="${PROJECT_ROOT}\MultiCellSim_1\for_testing" name="MultiCellSim.exe" optional="false">M:\tnw\bn\hy\Shared\Yiteng\MultiCellSim\git_repository\release_2_6_full\MultiCellSim_1\for_testing\MultiCellSim.exe</file>
     </build-deliverables>
     <workflow />
     <matlab>

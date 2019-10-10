@@ -1,16 +1,11 @@
-function [dist, pos] = init_dist_hex_new(gridsize, mcsteps, rcell, periodic_bc)
+function [dist, pos] = init_dist_hex(gridsizex, gridsizey)
 % Try to load a previously calculated matrix. If not found calculate and
 % save a new one initializing all cells in an hexagonal grid.
-% 
+
 % Preiously saved matrices are saved in ./data/dist_matrix_hex with the
 % filename <gridsizex><gridsizey>.mat
-if all(periodic_bc)
-    fname_str = sprintf('%d%d.mat', gridsize, gridsize);
-else
-    fname_str = sprintf('%d%d_periodic_%d_%d.mat', gridsize, gridsize,...
-        periodic_bc(1), periodic_bc(2));
-end
-filename = fullfile(pwd, 'data', 'dist_matrix_hex', fname_str);
+filename = fullfile(pwd, 'data', 'dist_matrix_hex', ...
+    sprintf('%d%d.mat', gridsizex, gridsizey));
 
 if exist(filename, 'file') == 2
     %disp('exist');
@@ -19,12 +14,12 @@ if exist(filename, 'file') == 2
     pos = tmp.pos;
 else
     %disp('not exist');
-    [pos, dist, ~, ~] = ...
-        initial_cells_random_markov(gridsize, mcsteps, rcell, periodic_bc);
+    [pos,ex,ey] = init_cellpos_hex(gridsizex,gridsizey);
+    dist = dist_mat(pos,gridsizex,gridsizey,ex,ey);
     [out, msg] = mkdir('data', 'dist_matrix_hex');
     if out~=1 % print message if output unexpected
         disp(msg);
-        disp('Error: could not make folder ./data/dist_matrix_hex');
+        disp('Error msg. 1: see reference on Wiki');
     else 
         disp('Successfully created folder');
     end
