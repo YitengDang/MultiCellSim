@@ -10,7 +10,9 @@ More information on the model and research can be found [here](http://youklab.or
 * Y. Dang, D. Grundel and H. Youk, [Cellular Dialogues that enable self-organization of dynamic spatial patterns](https://doi.org/10.1101/717595), bioRxiv 717595 (2019)
 
 To cite MultiCellSim, please cite the Dang et al. paper, as the software was developed as part of this publication.
-Additional ideas and background for this project can be found on the [Wiki page](https://github.com/YitengD/Multicellularity/wiki).
+Additional ideas and background for this project can be found on the [Wiki page](https://github.com/YitengD/Multicellularity/wiki). 
+
+Full source code of all scripts used to generate the data in the Dang et al. paper is available in [another GitHub repository]( https://github.com/YitengDang/Cell_Systems_2019).
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/YitengDang/Multicellularity-app/master/screenshots/2-model_72dpi.png" width="600" alt="model overview">
